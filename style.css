@@ -200,7 +200,7 @@ a { text-decoration: none; color: inherit; }
    HERO
    ═══════════════════════════════════════════ */
 .hero {
-  position: relative; width: 100%; height: clamp(420px, 70vw, 1011px);
+  position: relative; width: 100%; height: clamp(420px, 62vw, 880px);
   display: flex; align-items: center; overflow: hidden;
 }
 .hero-bg {
