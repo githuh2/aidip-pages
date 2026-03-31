@@ -293,7 +293,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=538&h=430&fit=crop" alt="벤처인증, 등록특허가 있어도 탈락하는 이유">
+        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=538&h=430&fit=crop" alt="벤처인증, 등록특허가 있어도 탈락하는 이유">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">벤처인증, 등록특허가 있어도 탈락하는 이유</div>
@@ -303,7 +303,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=538&h=430&fit=crop" alt="특허출원사실증명원 발급받기">
+        <img src="https://images.unsplash.com/photo-1568234928966-359c35dd8327?w=538&h=430&fit=crop" alt="특허출원사실증명원 발급받기">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">특허출원사실증명원 발급받기</div>
@@ -313,7 +313,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=538&h=430&fit=crop" alt="추억속의 초고속 특허우선심사제도">
+        <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=538&h=430&fit=crop" alt="추억속의 초고속 특허우선심사제도">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">추억속의 초고속 특허우선심사제도</div>
@@ -323,7 +323,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=538&h=430&fit=crop" alt="특허청이 거절했나요?">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=538&h=430&fit=crop" alt="특허청이 거절했나요?">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">특허청이 거절했나요?</div>
@@ -333,7 +333,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=538&h=430&fit=crop" alt="국어 교재 '국정원'은 상표등록될 수 있을까">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=538&h=430&fit=crop" alt="국어 교재 '국정원'은 상표등록될 수 있을까">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">국어 교재 '국정원'은 상표등록될 수 있을까</div>
@@ -343,7 +343,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=538&h=430&fit=crop" alt="당신의 상표는 안녕하신가요">
+        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?w=538&h=430&fit=crop" alt="당신의 상표는 안녕하신가요">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">당신의 상표는 안녕하신가요</div>
@@ -353,7 +353,7 @@
         </div>
       </div>
       <div class="column-card reveal d4">
-        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=538&h=430&fit=crop" alt="외국 온라인 커머스 판매도 한국 특허침해가 될 수 있습니다">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=538&h=430&fit=crop" alt="외국 온라인 커머스 판매도 한국 특허침해가 될 수 있습니다">
         <div class="column-card-overlay">
           <div>
             <div class="column-card-title">외국 온라인 커머스 판매도 한국 특허침해가 될 수 있습니다</div>
@@ -705,6 +705,19 @@ document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .f
     btn.style.transform = '';
   });
 });
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
 </script>
 </body>
 </html>

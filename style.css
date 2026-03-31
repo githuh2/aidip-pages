@@ -82,22 +82,21 @@ a { text-decoration: none; color: inherit; }
   height: 100%; display: flex; align-items: center;
 }
 .gnb-logo {
-  position: relative;
   display: flex; align-items: center; flex-shrink: 0; margin-right: auto;
 }
 .gnb-logo img {
-  position: absolute; left: 0; top: 50%; transform: translateY(-50%);
   height: clamp(28px, 3vw, 43px); width: auto;
 }
 .gnb-logo .logo-dark { display: none; }
-.gnb-logo .logo-white { display: block; }
-.gnb.scrolled .gnb-logo .logo-dark { display: block; }
-.gnb.scrolled .gnb-logo .logo-white { display: none; }
+.gnb-logo .logo-white { display: none; }
+.gnb-logo.logo-loaded .logo-white { display: block; }
+.gnb-logo.logo-loaded .gnb-logo-text { display: none; }
+.gnb.scrolled .gnb-logo.logo-loaded .logo-dark { display: block; }
+.gnb.scrolled .gnb-logo.logo-loaded .logo-white { display: none; }
 /* Footer logo */
 .footer-logo img { height: 32px; width: auto; }
-/* Text logo (fallback behind images) */
+/* Text logo (default, hidden when images load) */
 .gnb-logo-text {
-  position: relative; z-index: 0;
   font-size: clamp(14px, 1.3vw, 20px); font-weight: 700; color: #fff;
   transition: color 0.3s; white-space: nowrap;
 }

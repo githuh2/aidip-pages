@@ -165,6 +165,19 @@ function toggleDrawer() {
   document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
   if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
 }
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
 </script>
 </body>
 </html>
