@@ -84,6 +84,16 @@ a { text-decoration: none; color: inherit; }
 .gnb-logo {
   display: flex; align-items: center; flex-shrink: 0; margin-right: auto;
 }
+.gnb-logo img {
+  height: clamp(28px, 3vw, 43px); width: auto; transition: opacity 0.3s;
+}
+.gnb-logo .logo-dark { display: none; }
+.gnb-logo .logo-white { display: block; }
+.gnb.scrolled .gnb-logo .logo-dark { display: block; }
+.gnb.scrolled .gnb-logo .logo-white { display: none; }
+/* Footer logo */
+.footer-logo img { height: 32px; width: auto; }
+/* Fallback text logo (hidden when img loads) */
 .gnb-logo-text {
   font-size: clamp(14px, 1.3vw, 20px); font-weight: 700; color: #fff;
   transition: color 0.3s; white-space: nowrap;
@@ -200,7 +210,7 @@ a { text-decoration: none; color: inherit; }
    HERO
    ═══════════════════════════════════════════ */
 .hero {
-  position: relative; width: 100%; height: clamp(420px, 62vw, 880px);
+  position: relative; width: 100%; height: 100vh;
   display: flex; align-items: center; overflow: hidden;
 }
 .hero-bg {
@@ -276,7 +286,7 @@ a { text-decoration: none; color: inherit; }
 @keyframes scrollAnim { 0% { top: -12px; } 100% { top: 28px; } }
 
 @media (max-width: 768px) {
-  .hero { min-height: 340px; }
+  .hero { height: 100vh; min-height: 340px; }
   .hero-content {
     padding: 0 24px !important; text-align: center;
     max-width: 100%; margin: 0 auto;
