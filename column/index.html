@@ -36,9 +36,12 @@
 }
 
 .column-item {
-  border-radius: 16px; overflow: hidden; background: #fff;
+  border-radius: 16px; background: #fff;
   border: 1px solid var(--gray-border); transition: all 0.4s;
-  cursor: pointer;
+  cursor: pointer; overflow: hidden;
+}
+.column-item-body {
+  overflow: visible;
 }
 .column-item:hover {
   transform: translateY(-4px);
