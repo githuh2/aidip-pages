@@ -6,8 +6,141 @@
 <title>에이드 특허법률사무소 | AI-native 지식재산 파트너</title>
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
+<style>
+/* ─── Hero Text Split Animation ─── */
+.hero h1 .char {
+  display: inline-block; opacity: 0; transform: translateY(60px) rotateX(-40deg);
+  animation: charIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes charIn {
+  to { opacity: 1; transform: none; }
+}
+.hero .hero-sub { opacity: 0; transform: translateY(30px); }
+.hero .hero-sub.animate {
+  animation: fadeSlideUp 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeSlideUp {
+  to { opacity: 1; transform: none; }
+}
+
+/* ─── Floating Orbs (Hero) ─── */
+.hero-orbs { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.15;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+.hero-orb--1 {
+  width: 500px; height: 500px; background: var(--blue);
+  top: -10%; left: 10%; animation-duration: 14s;
+}
+.hero-orb--2 {
+  width: 350px; height: 350px; background: var(--blue-accent);
+  bottom: -5%; right: 15%; animation-delay: -4s; animation-duration: 10s;
+}
+.hero-orb--3 {
+  width: 250px; height: 250px; background: #fff;
+  top: 30%; right: 30%; animation-delay: -7s; animation-duration: 16s; opacity: 0.08;
+}
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ─── Hero Parallax ─── */
+.hero-bg { will-change: transform; }
+
+/* ─── Gradient Shimmer on Hero Title ─── */
+.hero h1 {
+  background: linear-gradient(90deg, #fff 0%, #fff 40%, var(--blue-accent) 50%, #fff 60%, #fff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: -100% 0; }
+}
+
+/* ─── Column Card 3D Tilt ─── */
+.column-card {
+  transform-style: preserve-3d; perspective: 800px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.column-card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.column-card-overlay {
+  transition: background 0.4s;
+}
+.column-card:hover .column-card-overlay {
+  background: rgba(38, 88, 235, 0.45);
+}
+
+/* ─── Carousel Scroll Indicator ─── */
+.carousel-progress {
+  height: 2px; background: var(--gray-border); margin-top: 16px; border-radius: 1px; overflow: hidden;
+}
+.carousel-progress-bar {
+  height: 100%; background: var(--blue); width: 20%;
+  transition: transform 0.3s ease;
+}
+
+/* ─── FAQ Smooth Glow ─── */
+.faq-item.open .faq-question { background: rgba(38, 88, 235, 0.03); }
+.faq-tag { transition: all 0.3s; }
+.faq-item.open .faq-tag { background: var(--blue); color: #fff; }
+
+/* ─── Section Divider Lines ─── */
+.section-line {
+  width: 60px; height: 3px; background: var(--blue); margin: 0 auto 40px;
+  transform: scaleX(0); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-line.visible { transform: scaleX(1); }
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--blue), var(--blue-accent));
+  transform-origin: left; transform: scaleX(0);
+  transition: none;
+}
+
+/* ─── Magnetic Button ─── */
+.gnb-btn-outline, .gnb-btn-primary, .btn-bordered, .faq-more-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Stagger Cards on Scroll ─── */
+.column-card.reveal.visible {
+  animation: cardPop 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes cardPop {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ─── Footer Reveal ─── */
+.footer { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+.footer.visible { opacity: 1; transform: none; }
+
+/* ─── Cursor Glow (desktop only) ─── */
+.cursor-glow {
+  position: fixed; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(38,88,235,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+  display: none;
+}
+@media (hover: hover) { .cursor-glow { display: block; } }
+</style>
 </head>
 <body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
 
 <!-- ═══ GNB ═══ -->
 <nav class="gnb" id="gnb">
@@ -60,9 +193,14 @@
     </video>
     <div class="hero-poster"></div>
   </div>
+  <div class="hero-orbs">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+  </div>
   <div class="hero-content">
     <div class="reveal">
-      <h1>AI native 지식재산 파트너</h1>
+      <h1 id="heroTitle">AI native 지식재산 파트너</h1>
     </div>
     <div class="reveal d1">
       <p class="hero-sub">
@@ -147,6 +285,7 @@
       <button id="carouselPrev">&#9664;</button>
       <button id="carouselNext">&#9654;</button>
     </div>
+    <div class="carousel-progress"><div class="carousel-progress-bar" id="carouselProgress"></div></div>
   </div>
   <div class="columns-watermark">COLUMN</div>
 </section>
@@ -156,6 +295,7 @@
   <div class="faq-inner">
     <div class="reveal">
       <h2 class="faq-title">자주 묻는 질문</h2>
+      <div class="section-line"></div>
     </div>
 
     <div class="reveal d1">
@@ -307,17 +447,76 @@
 </div>
 
 <script>
+// ─── Hero Text Split Animation ───
+(function() {
+  const title = document.getElementById('heroTitle');
+  const text = title.textContent;
+  title.innerHTML = '';
+  let charIndex = 0;
+  [...text].forEach((char, i) => {
+    if (char === ' ') {
+      title.innerHTML += ' ';
+    } else {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = char;
+      span.style.animationDelay = (0.3 + charIndex * 0.04) + 's';
+      title.appendChild(span);
+      charIndex++;
+    }
+  });
+  // Trigger subtitle after title animation
+  setTimeout(() => {
+    document.querySelector('.hero .hero-sub')?.classList.add('animate');
+  }, 600);
+})();
+
 // ─── Scroll Reveal ───
 const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Section lines
+      const line = e.target.querySelector('.section-line');
+      if (line) setTimeout(() => line.classList.add('visible'), 300);
+    }
+  });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ─── GNB Scroll ───
+// Footer reveal
+const footerObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.footer').forEach(el => footerObs.observe(el));
+
+// ─── GNB Scroll + Progress Bar + Parallax ───
 const gnb = document.getElementById('gnb');
+const scrollProgress = document.getElementById('scrollProgress');
+const heroBg = document.querySelector('.hero-bg');
+
 window.addEventListener('scroll', () => {
-  gnb.classList.toggle('scrolled', window.scrollY > 80);
+  const scrollY = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+
+  // GNB
+  gnb.classList.toggle('scrolled', scrollY > 80);
+
+  // Scroll progress
+  scrollProgress.style.transform = `scaleX(${scrollY / docH})`;
+
+  // Hero parallax
+  if (scrollY < window.innerHeight) {
+    heroBg.style.transform = `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`;
+  }
 }, { passive: true });
+
+// ─── Cursor Glow ───
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', (e) => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
 
 // ─── Mobile Drawer ───
 function toggleDrawer() {
@@ -337,13 +536,48 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
-// ─── Carousel Nav ───
+// ─── Carousel Nav + Progress ───
 const carousel = document.getElementById('carousel');
+const progressBar = document.getElementById('carouselProgress');
+
+function updateCarouselProgress() {
+  const max = carousel.scrollWidth - carousel.clientWidth;
+  const pct = max > 0 ? carousel.scrollLeft / max : 0;
+  progressBar.style.transform = `translateX(${pct * 400}%)`;
+}
+carousel.addEventListener('scroll', updateCarouselProgress, { passive: true });
+
 document.getElementById('carouselPrev').addEventListener('click', () => {
   carousel.scrollBy({ left: -558, behavior: 'smooth' });
 });
 document.getElementById('carouselNext').addEventListener('click', () => {
   carousel.scrollBy({ left: 558, behavior: 'smooth' });
+});
+
+// ─── Card 3D Tilt ───
+document.querySelectorAll('.column-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ─── Magnetic Buttons ───
+document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .faq-more-btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
 });
 </script>
 </body>
