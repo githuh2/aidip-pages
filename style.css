@@ -471,6 +471,67 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* ═══════════════════════════════════════════
+   ATTORNEY
+   ═══════════════════════════════════════════ */
+.attorney { padding: 100px 24px; background: #fff; }
+.attorney-inner { max-width: 1200px; margin: 0 auto; }
+.attorney-header { text-align: center; margin-bottom: 60px; }
+.attorney-header h2 {
+  font-size: clamp(24px, 3vw, 30px); font-weight: 600; line-height: 1.4; color: #000;
+}
+.attorney-header p {
+  font-size: clamp(15px, 1.5vw, 20px); font-weight: 400; line-height: 1.6; color: #000;
+  max-width: 600px; margin: 24px auto 0;
+}
+.attorney-content {
+  display: flex; gap: 80px; align-items: flex-start;
+}
+.attorney-photo {
+  flex: 0 0 465px; height: 682px;
+  background: #C9D3DD; position: relative; overflow: hidden;
+}
+.attorney-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top;
+}
+.attorney-info { flex: 1; padding-top: 20px; }
+.attorney-name {
+  font-size: 30px; font-weight: 600; color: #000; margin-bottom: 4px;
+  letter-spacing: 0.15em;
+}
+.attorney-title {
+  font-size: 20px; font-weight: 500; color: #000; margin-bottom: 24px;
+}
+.attorney-divider {
+  width: 53px; height: 2px; background: #000; margin-bottom: 24px;
+}
+.attorney-category {
+  font-size: 20px; font-weight: 500; color: #000; margin-bottom: 12px; margin-top: 32px;
+}
+.attorney-category:first-of-type { margin-top: 0; }
+.attorney-list {
+  list-style: none; padding: 0;
+}
+.attorney-list li {
+  font-size: 18px; font-weight: 400; line-height: 1.6; color: #333;
+  padding: 2px 0;
+}
+.attorney-list li .prefix {
+  color: var(--gray-text); font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .attorney { padding: 60px 24px; }
+  .attorney-content { flex-direction: column; gap: 40px; align-items: center; }
+  .attorney-photo { flex: none; width: 100%; max-width: 360px; height: 480px; }
+  .attorney-info { padding-top: 0; text-align: center; }
+  .attorney-divider { margin: 0 auto 24px; }
+  .attorney-name { font-size: 24px; }
+  .attorney-title { font-size: 17px; }
+  .attorney-category { font-size: 17px; }
+  .attorney-list li { font-size: 16px; }
+}
+
+/* ═══════════════════════════════════════════
    STRENGTHS (subpages)
    ═══════════════════════════════════════════ */
 .strengths { padding: 100px 24px; background: #fff; }
