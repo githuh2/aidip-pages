@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>에이드 특허법률사무소 | AI-native 지식재산 파트너</title>
+<link href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══ GNB ═══ -->
+<nav class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a href="/" class="gnb-logo">
+      <span class="gnb-logo-text" id="logo-text">에이드 특허법률사무소</span>
+    </a>
+
+    <div class="gnb-links">
+      <a href="/patent">특허</a>
+      <a href="/trademark">상표</a>
+      <a href="#">디자인</a>
+      <a href="#">심판/소송</a>
+      <a href="#">지식재산권 활용</a>
+      <a href="#">FAQ</a>
+    </div>
+
+    <div class="gnb-right">
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+    </div>
+
+    <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
+      <div class="gnb-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 드로어 -->
+<div class="gnb-drawer" id="drawer">
+  <a href="/patent">특허</a>
+  <a href="/trademark">상표</a>
+  <a href="#">디자인</a>
+  <a href="#">심판/소송</a>
+  <a href="#">지식재산권 활용</a>
+  <a href="#">FAQ</a>
+  <div class="gnb-drawer-buttons">
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기 →</button>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline>
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.webm" type="video/webm">
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.mp4" type="video/mp4">
+    </video>
+    <div class="hero-poster"></div>
+  </div>
+  <div class="hero-content">
+    <div class="reveal">
+      <h1>AI native 지식재산 파트너</h1>
+    </div>
+    <div class="reveal d1">
+      <p class="hero-sub">
+        특허·상표·디자인·기업인증까지,<br>
+        출원부터 분쟁 대응, 사업 확장 전략까지<br>
+        한 흐름으로 설계합니다.<br><br>
+        사업은 매출을 만들고,<br>
+        우리는 그 매출을 지키는 권리를 만듭니다.
+      </p>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ COLUMN ═══ -->
+<section class="columns-section">
+  <div class="columns-bg"></div>
+  <div class="columns-inner">
+    <div class="columns-header reveal">
+      <h2>에이드 칼럼</h2>
+      <p>에이드 특허법률사무소의 더 많은 소식을<br>칼럼을 통해 살펴보세요</p>
+      <button class="btn-bordered">자세히보기</button>
+    </div>
+
+    <div class="columns-carousel" id="carousel">
+      <div class="column-card reveal d1">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=538&h=430&fit=crop" alt="">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">칼럼제목</div>
+            <div class="column-card-desc">칼럼내용 간략하게...</div>
+          </div>
+          <div class="column-card-date">2026. 03. 20</div>
+        </div>
+      </div>
+      <div class="column-card reveal d2">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=538&h=430&fit=crop" alt="">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">칼럼제목</div>
+            <div class="column-card-desc">칼럼내용 간략하게...</div>
+          </div>
+          <div class="column-card-date">2026. 03. 20</div>
+        </div>
+      </div>
+      <div class="column-card reveal d3">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=538&h=430&fit=crop" alt="">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">칼럼제목</div>
+            <div class="column-card-desc">칼럼내용 간략하게...</div>
+          </div>
+          <div class="column-card-date">2026. 03. 20</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=538&h=430&fit=crop" alt="">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">칼럼제목</div>
+            <div class="column-card-desc">칼럼내용 간략하게...</div>
+          </div>
+          <div class="column-card-date">2026. 03. 20</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=538&h=430&fit=crop" alt="">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">칼럼제목</div>
+            <div class="column-card-desc">칼럼내용 간략하게...</div>
+          </div>
+          <div class="column-card-date">2026. 03. 20</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns-nav">
+      <button id="carouselPrev">&#9664;</button>
+      <button id="carouselNext">&#9654;</button>
+    </div>
+  </div>
+  <div class="columns-watermark">COLUMN</div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="reveal">
+      <h2 class="faq-title">자주 묻는 질문</h2>
+    </div>
+
+    <div class="reveal d1">
+      <div class="faq-item open">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">특허</span>
+          <span class="faq-q-text">변리사를 통해 출원하면 비용만 더 드는 것 아닌가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            직접 출원도 가능하나, 등록이 안될 수 있습니다. 등록이 되더라도, 권리 범위 설정에 실패하여 경쟁사를 막을 수 없을 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d1">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">특허</span>
+          <span class="faq-q-text">출원 후 취소·포기할 수 있나요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            출원 후에도 취하가 가능합니다. 다만 시기에 따라 관납료 환급 여부가 달라지므로 상담을 권합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">상표</span>
+          <span class="faq-q-text">지방인데 방문 없이 진행 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 전 과정 비대면으로 진행 가능합니다. 전화, 카카오톡, 이메일로 상담부터 출원까지 처리됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">상표</span>
+          <span class="faq-q-text">특허·상표·디자인, 동시에 출원할 수 있나요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 동시 출원이 가능합니다. 오히려 사업 초기에 한 번에 잡아두는 것이 효율적입니다. 상담 시 어떤 조합이 필요한지 함께 검토해 드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d3">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">디자인</span>
+          <span class="faq-q-text">무료상담 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 초기 상담은 무료입니다. 상황을 듣고 어떤 출원이 필요한지 방향을 잡아드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d3">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">심판</span>
+          <span class="faq-q-text">개인도 출원할 수 있나요, 법인만 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            개인도 출원 가능합니다. 개인사업자든 법인이든, 자연인 본인 명의로도 출원할 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d4">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">기업인증</span>
+          <span class="faq-q-text">출원과 등록의 차이가 뭔가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            출원은 특허청에 신청서를 제출한 상태이고, 등록은 심사를 통과해 권리가 확정된 상태입니다. 출원만으로도 일정한 보호 효과가 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-more reveal d4">
+      <button class="faq-more-btn">FAQ 더보기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <span>에이드 특허법률사무소</span>
+    </div>
+    <div class="footer-links">
+      <a href="#">개인정보처리방침</a>
+      <a href="#">이메일무단수집거부</a>
+      <a href="#">면책공고</a>
+    </div>
+    <div class="footer-company">에이드 특허법률사무소</div>
+    <div class="footer-info">
+      서울 서초구 서초대로74길 45 10층 ㅣ 전화 02-000-0000 ㅣ 팩스 : 02-000-0000
+    </div>
+    <div class="footer-copy">
+      Copyrightⓒ 2026 AID PATENT & LAW FIRM. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ Quick Bar ═══ -->
+<div class="quickbar">
+  <a href="#">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.5"/></svg>
+    N
+  </a>
+  <a href="#">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" fill="none" stroke-width="1.5"/></svg>
+    &#9675;
+  </a>
+  <a href="#top">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>
+    TOP
+  </a>
+</div>
+
+<script>
+// ─── Scroll Reveal ───
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ─── GNB Scroll ───
+const gnb = document.getElementById('gnb');
+window.addEventListener('scroll', () => {
+  gnb.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// ─── Mobile Drawer ───
+function toggleDrawer() {
+  const btn = document.getElementById('mobileBtn');
+  const drawer = document.getElementById('drawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
+}
+
+// ─── FAQ Accordion ───
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ─── Carousel Nav ───
+const carousel = document.getElementById('carousel');
+document.getElementById('carouselPrev').addEventListener('click', () => {
+  carousel.scrollBy({ left: -558, behavior: 'smooth' });
+});
+document.getElementById('carouselNext').addEventListener('click', () => {
+  carousel.scrollBy({ left: 558, behavior: 'smooth' });
+});
+</script>
+</body>
+</html>

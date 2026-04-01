@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<title>에이드 특허법률사무소 | AI-native 지식재산 파트너</title>
+<link href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
+<style>
+/* ─── Hero Text Split Animation ─── */
+.hero h1 .char {
+  display: inline-block; opacity: 0; transform: translateY(60px) rotateX(-40deg);
+  animation: charIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes charIn {
+  to { opacity: 1; transform: none; }
+}
+.hero .hero-sub { opacity: 0; transform: translateY(30px); }
+.hero .hero-sub.animate {
+  animation: fadeSlideUp 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes fadeSlideUp {
+  to { opacity: 1; transform: none; }
+}
+
+/* ─── Floating Orbs (Hero) ─── */
+.hero-orbs { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.hero-orb {
+  position: absolute; border-radius: 50%;
+  filter: blur(80px); opacity: 0.15;
+  animation: orbFloat 12s ease-in-out infinite alternate;
+}
+.hero-orb--1 {
+  width: 500px; height: 500px; background: var(--blue);
+  top: -10%; left: 10%; animation-duration: 14s;
+}
+.hero-orb--2 {
+  width: 350px; height: 350px; background: var(--blue-accent);
+  bottom: -5%; right: 15%; animation-delay: -4s; animation-duration: 10s;
+}
+.hero-orb--3 {
+  width: 250px; height: 250px; background: #fff;
+  top: 30%; right: 30%; animation-delay: -7s; animation-duration: 16s; opacity: 0.08;
+}
+@keyframes orbFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ─── Gradient Shimmer on Hero Title ─── */
+.hero h1 {
+  background: linear-gradient(90deg, #fff 0%, #fff 40%, var(--blue-accent) 50%, #fff 60%, #fff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s 1.5s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: -100% 0; }
+}
+
+/* ─── Column Card 3D Tilt ─── */
+.column-card {
+  transform-style: preserve-3d; perspective: 800px;
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.column-card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.column-card-overlay {
+  transition: background 0.4s;
+}
+.column-card:hover .column-card-overlay {
+  background: rgba(38, 88, 235, 0.45);
+}
+
+/* ─── Carousel Scroll Indicator ─── */
+.carousel-progress {
+  height: 2px; background: var(--gray-border); margin-top: 16px; border-radius: 1px; overflow: hidden;
+}
+.carousel-progress-bar {
+  height: 100%; background: var(--blue); width: 20%;
+  transition: transform 0.3s ease;
+}
+
+/* ─── FAQ Smooth Glow ─── */
+.faq-item.open .faq-question { background: rgba(38, 88, 235, 0.03); }
+.faq-tag { transition: all 0.3s; }
+.faq-item.open .faq-tag { background: var(--blue); color: #fff; }
+
+/* ─── Section Divider Lines ─── */
+.section-line {
+  width: 60px; height: 3px; background: var(--blue); margin: 0 auto 40px;
+  transform: scaleX(0); transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.section-line.visible { transform: scaleX(1); }
+
+/* ─── Scroll Progress Bar ─── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; height: 3px; z-index: 200;
+  background: linear-gradient(90deg, var(--blue), var(--blue-accent));
+  transform-origin: left; transform: scaleX(0);
+  transition: none;
+}
+
+/* ─── Magnetic Button ─── */
+.gnb-btn-outline, .gnb-btn-primary, .btn-bordered, .faq-more-btn {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Stagger Cards on Scroll ─── */
+.column-card.reveal.visible {
+  animation: cardPop 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes cardPop {
+  0% { opacity: 0; transform: translateY(40px) scale(0.95); }
+  100% { opacity: 1; transform: none; }
+}
+
+/* ─── Footer Reveal ─── */
+.footer { opacity: 0; transform: translateY(20px); transition: all 0.8s ease; }
+.footer.visible { opacity: 1; transform: none; }
+
+/* ─── Cursor Glow (desktop only) ─── */
+.cursor-glow {
+  position: fixed; width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(38,88,235,0.06) 0%, transparent 70%);
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+  display: none;
+}
+@media (hover: hover) { .cursor-glow { display: block; } }
+
+/* ─── Mobile Fixes ─── */
+@media (max-width: 768px) {
+  /* Hero: center content */
+  .hero-content { padding-left: 24px !important; padding-right: 24px; text-align: center; max-width: 100%; }
+  .hero h1 { font-size: clamp(24px, 7vw, 36px); line-height: 1.3; }
+  .hero .hero-sub { font-size: clamp(14px, 4vw, 18px); line-height: 1.6; }
+
+  /* Orbs: shrink on mobile */
+  .hero-orb--1 { width: 200px; height: 200px; }
+  .hero-orb--2 { width: 150px; height: 150px; }
+  .hero-orb--3 { width: 100px; height: 100px; }
+
+  /* Columns section: fix padding */
+  .columns-inner { padding: 60px 20px !important; }
+  .columns-header h2 { font-size: 24px; line-height: 1.5; }
+
+  /* FAQ: center and tighten */
+  .faq-inner { padding: 0 16px; }
+  .faq-title { font-size: 22px; }
+
+  /* Footer: center on mobile */
+  .footer-inner { padding: 0 24px !important; }
+
+  /* Disable cursor glow on mobile */
+  .cursor-glow { display: none !important; }
+
+  /* Scroll progress thinner on mobile */
+  .scroll-progress { height: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ═══ GNB ═══ -->
+<nav class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a href="./" class="gnb-logo">
+      <img src="assets/logo-white.svg" alt="에이드 특허법률사무소" class="logo-white">
+      <img src="assets/logo-dark.svg" alt="에이드 특허법률사무소" class="logo-dark">
+      <span class="gnb-logo-text">에이드 특허법률사무소</span>
+    </a>
+
+    <div class="gnb-links">
+      <a href="patent/">특허</a>
+      <a href="trademark/">상표</a>
+      <a href="design/">디자인</a>
+      <a href="tribunal/">심판/소송</a>
+      <a href="ip-strategy/">지식재산권 활용</a>
+      <a href="column/">칼럼</a>
+      <a href="faq/">FAQ</a>
+    </div>
+
+    <div class="gnb-right">
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+    </div>
+
+    <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
+      <div class="gnb-hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 모바일 드로어 -->
+<div class="gnb-drawer" id="drawer">
+  <a href="patent/">특허</a>
+  <a href="trademark/">상표</a>
+  <a href="design/">디자인</a>
+  <a href="tribunal/">심판/소송</a>
+  <a href="ip-strategy/">지식재산권 활용</a>
+  <a href="column/">칼럼</a>
+  <a href="faq/">FAQ</a>
+  <div class="gnb-drawer-buttons">
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기 →</button>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg">
+    <video autoplay muted loop playsinline
+           poster="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_poster.webp">
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.webm" type="video/webm">
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.mp4" type="video/mp4">
+    </video>
+    <div class="hero-poster"
+         style="background-image:url('https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_poster.webp')">
+    </div>
+  </div>
+  <div class="hero-orbs">
+    <div class="hero-orb hero-orb--1"></div>
+    <div class="hero-orb hero-orb--2"></div>
+    <div class="hero-orb hero-orb--3"></div>
+  </div>
+  <div class="hero-content">
+    <div class="reveal">
+      <h1 id="heroTitle">AI native 지식재산 파트너</h1>
+    </div>
+    <div class="reveal d1">
+      <p class="hero-sub">
+        특허·상표·디자인·기업인증까지,<br>
+        출원부터 분쟁 대응, 사업 확장 전략까지<br>
+        한 흐름으로 설계합니다.<br><br>
+        사업은 매출을 만들고,<br>
+        우리는 그 매출을 지키는 권리를 만듭니다.
+      </p>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ COLUMN ═══ -->
+<section class="columns-section">
+  <div class="columns-bg"></div>
+  <div class="columns-inner">
+    <div class="columns-header reveal">
+      <h2>에이드 칼럼</h2>
+      <p>에이드 특허법률사무소의 더 많은 소식을<br>칼럼을 통해 살펴보세요</p>
+      <button class="btn-bordered">자세히보기</button>
+    </div>
+
+    <div class="columns-carousel" id="carousel">
+      <div class="column-card reveal d1">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=538&h=430&fit=crop" alt="정책자금 기관별 정리">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">정책자금 기관별 정리</div>
+            <div class="column-card-desc">기업인증</div>
+          </div>
+          <div class="column-card-date">2025. 12. 15</div>
+        </div>
+      </div>
+      <div class="column-card reveal d2">
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=538&h=430&fit=crop" alt="바이오 특허는 레시피입니다">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">바이오 특허는 레시피입니다</div>
+            <div class="column-card-desc">PCSK9 타겟 항체 사건 리뷰</div>
+          </div>
+          <div class="column-card-date">2025. 11. 27</div>
+        </div>
+      </div>
+      <div class="column-card reveal d3">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=538&h=430&fit=crop" alt="특허 포괄위임신청 안내">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">특허 포괄위임신청 안내</div>
+            <div class="column-card-desc">특허청 이용</div>
+          </div>
+          <div class="column-card-date">2025. 09. 16</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=538&h=430&fit=crop" alt="벤처인증, 등록특허가 있어도 탈락하는 이유">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">벤처인증, 등록특허가 있어도 탈락하는 이유</div>
+            <div class="column-card-desc">기업인증</div>
+          </div>
+          <div class="column-card-date">2025. 09. 09</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1568234928966-359c35dd8327?w=538&h=430&fit=crop" alt="특허출원사실증명원 발급받기">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">특허출원사실증명원 발급받기</div>
+            <div class="column-card-desc">특허청 이용</div>
+          </div>
+          <div class="column-card-date">2025. 09. 07</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1501139083538-0139583c060f?w=538&h=430&fit=crop" alt="추억속의 초고속 특허우선심사제도">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">추억속의 초고속 특허우선심사제도</div>
+            <div class="column-card-desc">특허 실무</div>
+          </div>
+          <div class="column-card-date">2025. 09. 07</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=538&h=430&fit=crop" alt="특허청이 거절했나요?">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">특허청이 거절했나요?</div>
+            <div class="column-card-desc">상표정보제공을 이용해서 뒤집어 보세요!</div>
+          </div>
+          <div class="column-card-date">2025. 08. 05</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=538&h=430&fit=crop" alt="국어 교재 '국정원'은 상표등록될 수 있을까">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">국어 교재 '국정원'은 상표등록될 수 있을까</div>
+            <div class="column-card-desc">상표 실무</div>
+          </div>
+          <div class="column-card-date">2025. 07. 09</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1493612276216-ee3925520721?w=538&h=430&fit=crop" alt="당신의 상표는 안녕하신가요">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">당신의 상표는 안녕하신가요</div>
+            <div class="column-card-desc">상표 실무</div>
+          </div>
+          <div class="column-card-date">2025. 07. 08</div>
+        </div>
+      </div>
+      <div class="column-card reveal d4">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=538&h=430&fit=crop" alt="외국 온라인 커머스 판매도 한국 특허침해가 될 수 있습니다">
+        <div class="column-card-overlay">
+          <div>
+            <div class="column-card-title">외국 온라인 커머스 판매도 한국 특허침해가 될 수 있습니다</div>
+            <div class="column-card-desc">특허 실무</div>
+          </div>
+          <div class="column-card-date">2025. 06. 21</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns-nav">
+      <button id="carouselPrev">&#9664;</button>
+      <button id="carouselNext">&#9654;</button>
+    </div>
+    <div class="carousel-progress"><div class="carousel-progress-bar" id="carouselProgress"></div></div>
+  </div>
+  <div class="columns-watermark">COLUMN</div>
+</section>
+
+<!-- ═══ ATTORNEY ═══ -->
+<section class="attorney" id="attorney">
+  <div class="attorney-inner">
+    <div class="attorney-header reveal">
+      <h2>에이드는 규모가 아닌, 깊이로 승부합니다.</h2>
+      <p>AI 기반 분석과 분야별 전문 변리사 협업 체계로, 특허·상표·디자인 등 모든 IP 이슈에 정밀하고 강력한 솔루션을 제공해드립니다. 당신의 기술이 흔들리지 않는 법적 기반 위에서 성장할 수 있도록, 에이드가 끝까지 함께하겠습니다.</p>
+    </div>
+
+    <div class="attorney-content">
+      <div class="attorney-photo reveal from-left">
+        <img src="https://patent1004.com/static/patent_syhuh.197f508db221.webp" alt="허성엽 변리사">
+      </div>
+      <div class="attorney-info reveal from-right d1">
+        <div class="attorney-name">허 성 엽</div>
+        <div class="attorney-title">에이드 특허법률사무소 대표변리사</div>
+        <div class="attorney-divider"></div>
+
+        <div class="attorney-category">자격 / 면허</div>
+        <ul class="attorney-list">
+          <li>변리사 (2014)</li>
+          <li>수의사 (2016)</li>
+        </ul>
+
+        <div class="attorney-category">학력 / 경력</div>
+        <ul class="attorney-list">
+          <li>국립경상대학교 수의학과</li>
+          <li><span class="prefix">(前)</span> 공군 지식재산보호담당</li>
+          <li><span class="prefix">(前)</span> 파도국제특허법률사무소</li>
+          <li><span class="prefix">(前)</span> 특허법인 본</li>
+          <li><span class="prefix">(前)</span> 파이특허법률사무소</li>
+        </ul>
+
+        <div class="attorney-category">활동</div>
+        <ul class="attorney-list">
+          <li>의료원/바이오 스타트업 특허출원 다수 대리</li>
+          <li>바이오마커/의약품/의료기기 다수 특허분석</li>
+          <li>기업인증과정</li>
+          <li>생물의약품규제과학전문과정</li>
+          <li>한국보건산업진흥원 평가위원</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner">
+    <div class="reveal">
+      <h2 class="faq-title">자주 묻는 질문</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="reveal d1">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">특허</span>
+          <span class="faq-q-text">변리사를 통해 출원하면 비용만 더 드는 것 아닌가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            직접 출원도 가능하나, 등록이 안될 수 있습니다. 등록이 되더라도, 권리 범위 설정에 실패하여 경쟁사를 막을 수 없을 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d1">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">특허</span>
+          <span class="faq-q-text">출원 후 취소·포기할 수 있나요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            출원 후에도 취하가 가능합니다. 다만 시기에 따라 관납료 환급 여부가 달라지므로 상담을 권합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">상표</span>
+          <span class="faq-q-text">지방인데 방문 없이 진행 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 전 과정 비대면으로 진행 가능합니다. 전화, 카카오톡, 이메일로 상담부터 출원까지 처리됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d2">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">상표</span>
+          <span class="faq-q-text">특허·상표·디자인, 동시에 출원할 수 있나요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 동시 출원이 가능합니다. 오히려 사업 초기에 한 번에 잡아두는 것이 효율적입니다. 상담 시 어떤 조합이 필요한지 함께 검토해 드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d3">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">디자인</span>
+          <span class="faq-q-text">무료상담 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            네, 초기 상담은 무료입니다. 상황을 듣고 어떤 출원이 필요한지 방향을 잡아드립니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d3">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">심판</span>
+          <span class="faq-q-text">개인도 출원할 수 있나요, 법인만 가능한가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            개인도 출원 가능합니다. 개인사업자든 법인이든, 자연인 본인 명의로도 출원할 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal d4">
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-tag">기업인증</span>
+          <span class="faq-q-text">출원과 등록의 차이가 뭔가요?</span>
+          <span class="faq-arrow"></span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            출원은 특허청에 신청서를 제출한 상태이고, 등록은 심사를 통과해 권리가 확정된 상태입니다. 출원만으로도 일정한 보호 효과가 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-more reveal d4">
+      <button class="faq-more-btn" onclick="location.href='faq/'">FAQ 더보기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="privacy/">개인정보처리방침</a>
+      <a href="email-policy/">이메일무단수집거부</a>
+      <a href="disclaimer/">면책공고</a>
+    </div>
+    <div class="footer-company">에이드 특허법률사무소</div>
+    <div class="footer-info">
+      서울 서초구 서초대로74길 45 10층 ㅣ 전화 02-000-0000 ㅣ 팩스 : 02-000-0000
+    </div>
+    <div class="footer-copy">
+      Copyrightⓒ 2026 AID PATENT & LAW FIRM. ALL RIGHTS RESERVED.
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ Quick Bar ═══ -->
+<div class="quickbar">
+  <a href="#">
+    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.5"/></svg>
+    N
+  </a>
+  <a href="#">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" fill="none" stroke-width="1.5"/></svg>
+    &#9675;
+  </a>
+  <a href="#top">
+    <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>
+    TOP
+  </a>
+</div>
+
+<script>
+// ─── Hero Text Split Animation ───
+(function() {
+  const title = document.getElementById('heroTitle');
+  const text = title.textContent;
+  title.innerHTML = '';
+  let charIndex = 0;
+  [...text].forEach((char, i) => {
+    if (char === ' ') {
+      title.innerHTML += ' ';
+    } else {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = char;
+      span.style.animationDelay = (0.3 + charIndex * 0.04) + 's';
+      title.appendChild(span);
+      charIndex++;
+    }
+  });
+  // Trigger subtitle after title animation
+  setTimeout(() => {
+    document.querySelector('.hero .hero-sub')?.classList.add('animate');
+  }, 600);
+})();
+
+// ─── Scroll Reveal ───
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // Section lines
+      const line = e.target.querySelector('.section-line');
+      if (line) setTimeout(() => line.classList.add('visible'), 300);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// Footer reveal
+const footerObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.footer').forEach(el => footerObs.observe(el));
+
+// ─── GNB Scroll + Progress Bar + Parallax ───
+const gnb = document.getElementById('gnb');
+const scrollProgress = document.getElementById('scrollProgress');
+const heroBg = document.querySelector('.hero-bg');
+
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+
+  // GNB
+  gnb.classList.toggle('scrolled', scrollY > 80);
+
+  // Scroll progress
+  scrollProgress.style.transform = `scaleX(${scrollY / docH})`;
+
+}, { passive: true });
+
+// ─── Hero Video Fallback ───
+(function() {
+  const video = document.querySelector('.hero-bg video');
+  const poster = document.querySelector('.hero-poster');
+  if (!video || !poster) return;
+
+  function showPoster() {
+    video.style.display = 'none';
+    poster.style.display = 'block';
+  }
+
+  video.addEventListener('error', showPoster);
+  video.querySelectorAll('source').forEach(function(src) {
+    src.addEventListener('error', function() {
+      if (!video.currentSrc) showPoster();
+    });
+  });
+
+  // 영상이 5초 내 재생 시작하지 못하면 포스터로 전환
+  var fallbackTimer = setTimeout(function() {
+    if (video.readyState < 2) showPoster();
+  }, 5000);
+
+  video.addEventListener('canplay', function() {
+    clearTimeout(fallbackTimer);
+  });
+})();
+
+// ─── Cursor Glow ───
+const glow = document.getElementById('cursorGlow');
+document.addEventListener('mousemove', (e) => {
+  glow.style.left = e.clientX + 'px';
+  glow.style.top = e.clientY + 'px';
+});
+
+// ─── Mobile Drawer ───
+function toggleDrawer() {
+  const btn = document.getElementById('mobileBtn');
+  const drawer = document.getElementById('drawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
+}
+
+// ─── FAQ Accordion ───
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ─── Carousel Nav + Progress ───
+const carousel = document.getElementById('carousel');
+const progressBar = document.getElementById('carouselProgress');
+
+function updateCarouselProgress() {
+  const max = carousel.scrollWidth - carousel.clientWidth;
+  const pct = max > 0 ? carousel.scrollLeft / max : 0;
+  progressBar.style.transform = `translateX(${pct * 400}%)`;
+}
+carousel.addEventListener('scroll', updateCarouselProgress, { passive: true });
+
+document.getElementById('carouselPrev').addEventListener('click', () => {
+  carousel.scrollBy({ left: -558, behavior: 'smooth' });
+});
+document.getElementById('carouselNext').addEventListener('click', () => {
+  carousel.scrollBy({ left: 558, behavior: 'smooth' });
+});
+
+// ─── Card 3D Tilt ───
+document.querySelectorAll('.column-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
+
+// ─── Magnetic Buttons ───
+document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .faq-more-btn').forEach(btn => {
+  btn.addEventListener('mousemove', (e) => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
+
+// ─── Fullpage Scroll (wheel hijack) ───
+(function() {
+  const sections = Array.from(document.querySelectorAll('.hero, .columns-section, .attorney, .faq-section, .footer'));
+  let current = 0;
+  let locked = false;
+  const DURATION = 800; // 전환 시간(ms) — 조절 가능
+  const COOLDOWN = 1000; // 다음 스크롤까지 대기(ms)
+
+  var gnbH = document.querySelector('.gnb').offsetHeight;
+
+  function goTo(idx) {
+    if (idx < 0 || idx >= sections.length || locked) return;
+    locked = true;
+    current = idx;
+    var offset = idx === 0 ? 0 : gnbH;
+    window.scrollTo({ top: sections[idx].offsetTop - offset, behavior: 'smooth' });
+    setTimeout(function() { locked = false; }, COOLDOWN);
+  }
+
+  // 현재 보이는 섹션 감지 (새로고침/직접 스크롤 대응)
+  function detectCurrent() {
+    var best = 0, minDist = Infinity;
+    sections.forEach(function(s, i) {
+      var offset = i === 0 ? 0 : gnbH;
+      var d = Math.abs(s.getBoundingClientRect().top - offset);
+      if (d < minDist) { minDist = d; best = i; }
+    });
+    current = best;
+  }
+
+  // 휠 이벤트
+  window.addEventListener('wheel', function(e) {
+    if (locked) { e.preventDefault(); return; }
+    // 섹션 내부에 스크롤 가능한 콘텐츠가 있으면 무시 (캐러셀 등)
+    var el = e.target;
+    while (el && el !== document.body) {
+      if (el.scrollWidth > el.clientWidth && el.classList.contains('columns-carousel')) return;
+      el = el.parentElement;
+    }
+    detectCurrent();
+    if (e.deltaY > 30) {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (e.deltaY < -30) {
+      e.preventDefault();
+      goTo(current - 1);
+    }
+  }, { passive: false });
+
+  // 터치 이벤트 (모바일)
+  var touchY = 0;
+  window.addEventListener('touchstart', function(e) {
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchend', function(e) {
+    if (locked) return;
+    var diff = touchY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) < 50) return; // 작은 터치 무시
+    detectCurrent();
+    if (diff > 0) goTo(current + 1);
+    else goTo(current - 1);
+  }, { passive: true });
+
+  // 키보드 (위/아래 화살표, Page Up/Down)
+  window.addEventListener('keydown', function(e) {
+    if (locked) return;
+    detectCurrent();
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
+  });
+})();
+</script>
+</body>
+</html>

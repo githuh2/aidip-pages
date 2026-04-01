@@ -1,0 +1,20 @@
+# WordPress legacy
+*.php
+wp-*
+xmlrpc.php
+license.txt
+readme.html
+
+# Django legacy
+apps.py
+urls.py
+views.py
+__init__.py
+
+# Other
+*.xml
+*.md
+templates/
+hosting_index.html
+naver*.html
+.git

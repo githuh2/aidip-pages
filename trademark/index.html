@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<title>상표등록 | 에이드 특허법률사무소</title>
+<link href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══ GNB ═══ -->
+<nav class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a href="../" class="gnb-logo">
+      <img src="../assets/logo-white.svg" alt="에이드 특허법률사무소" class="logo-white">
+      <img src="../assets/logo-dark.svg" alt="에이드 특허법률사무소" class="logo-dark">
+      <span class="gnb-logo-text">에이드 특허법률사무소</span>
+    </a>
+    <div class="gnb-links">
+      <a href="../patent/">특허</a>
+      <a href="../trademark/" class="active">상표</a>
+      <a href="../design/">디자인</a>
+      <a href="../tribunal/">심판/소송</a>
+      <a href="../ip-strategy/">지식재산권 활용</a>
+      <a href="../column/">칼럼</a>
+      <a href="../faq/">FAQ</a>
+    </div>
+    <div class="gnb-right">
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록</button>
+    </div>
+    <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
+      <div class="gnb-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="gnb-drawer" id="drawer">
+  <a href="../patent/">특허</a>
+  <a href="../trademark/">상표</a>
+  <a href="../design/">디자인</a>
+  <a href="../tribunal/">심판/소송</a>
+  <a href="../ip-strategy/">지식재산권 활용</a>
+  <a href="../column/">칼럼</a>
+  <a href="../faq/">FAQ</a>
+  <div class="gnb-drawer-buttons">
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록 →</button>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero hero--center">
+  <div class="hero-bg hero-bg--static" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1920&q=80')"></div>
+  <div class="hero-content">
+    <div class="reveal">
+      <h1>브랜드의 이름에<br><span>상표</span>로 권리를 입힙니다.</h1>
+    </div>
+    <div class="reveal d1">
+      <p class="subtitle">이름이 곧 자산입니다. 먼저 등록한 사람이 주인입니다.</p>
+    </div>
+    <div class="reveal d2">
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록 신청하기</button>
+        <button class="btn-outline" onclick="document.getElementById('strengths').scrollIntoView({behavior:'smooth'})">서비스 안내 ↓</button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ═══ STRENGTHS ═══ -->
+<section class="strengths" id="strengths">
+  <div class="strengths-inner">
+    <div class="reveal">
+      <h2 class="section-title">상표, 왜 서둘러야 하는가.</h2>
+      <p class="section-subtitle">상표는 선출원주의입니다. 먼저 출원한 사람이 권리를 갖습니다.</p>
+    </div>
+    <div class="strengths-grid">
+      <div class="strength-card reveal d1">
+        <div class="strength-num" data-count="45" data-suffix="개">0</div>
+        <div class="strength-label">상품·서비스 분류</div>
+        <div class="strength-sub">정확한 류 지정이 핵심</div>
+      </div>
+      <div class="strength-card reveal d2">
+        <div class="strength-num" data-count="10" data-suffix="년">0</div>
+        <div class="strength-label">등록 후 존속기간</div>
+        <div class="strength-sub">갱신으로 영구 유지 가능</div>
+      </div>
+      <div class="strength-card reveal d3">
+        <div class="strength-num" data-count="1" data-suffix=":1">0</div>
+        <div class="strength-label">담당 변리사 직접 소통</div>
+        <div class="strength-sub">접수→검토 분리 없음</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSIGHT ═══ -->
+<section class="insight">
+  <div class="insight-inner">
+    <div class="reveal">
+      <div class="insight-badge">많은 사업자가 놓치는 포인트</div>
+    </div>
+    <div class="reveal d1">
+      <h2>같은 이름이라도<br><span>지정상품 선택에 따라</span> 보호범위가 달라집니다.</h2>
+    </div>
+    <div class="reveal d2">
+      <p>
+        상표는 이름 자체가 아니라, <strong>어떤 상품·서비스에 쓰느냐</strong>에 따라 권리가 결정됩니다.
+        지정상품을 잘못 선택하면 정작 보호받아야 할 영역이 빠질 수 있습니다.
+        <br><br>
+        사업 확장까지 고려한 류 설계가 중요합니다.
+      </p>
+    </div>
+    <div class="reveal d3">
+      <div class="insight-case">
+        <div class="label">CASE STUDY</div>
+        <p>
+          카페를 운영하며 43류(음식점업)만 등록했다가,
+          이후 온라인으로 원두 판매를 시작했을 때 35류(판매업)를 확보하지 않아
+          동일 상표를 <strong>타인이 먼저 등록</strong>해
+          자기 브랜드를 쓰지 못하는 사례가 빈번합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LOGO INSIGHT ═══ -->
+<section class="insight insight--logo">
+  <div class="insight-inner">
+    <div class="reveal">
+      <div class="insight-badge">전문가의 판단이 필요한 영역</div>
+    </div>
+    <div class="reveal d1">
+      <h2>로고 상표,<br><span>출원 방식</span>에 정답은 없습니다.</h2>
+    </div>
+    <div class="reveal d2">
+      <p>
+        상표 출원 로고는 도형(심볼)과 문자(브랜드명)가 결합된 형태가 대부분입니다.
+        결합 출원과 분리 출원 중 어떤 방식이 유리한지는
+        <strong>브랜드의 특성과 사업 전략에 따라 달라집니다.</strong>
+      </p>
+    </div>
+    <div class="reveal d3">
+      <div class="logo-strategy-grid">
+        <div class="logo-strategy-card">
+          <div class="logo-strategy-title">결합 출원</div>
+          <p>도형과 문자를 하나로 출원합니다. 비용은 줄지만, 로고 일부만 변경해도 권리 범위가 흔들릴 수 있습니다.</p>
+        </div>
+        <div class="logo-strategy-card">
+          <div class="logo-strategy-title">분리 출원</div>
+          <p>도형과 문자를 각각 출원합니다. 권리가 더 넓어지지만, 비용과 관리 부담이 늘어납니다.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reveal d4">
+      <div class="insight-case">
+        <div class="label">POINT</div>
+        <p>
+          무조건 분리 출원이 유리한 것은 아닙니다.
+          브랜드 인지도, 향후 리브랜딩 가능성, 예산 등을 종합적으로 고려해야 합니다.
+          <strong>변리사가 브랜드 상황을 분석하여 최적의 출원 전략을 설계합니다.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services">
+  <div class="services-inner">
+    <div class="service-row">
+      <div class="service-img reveal from-left">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-text reveal from-right d1">
+        <h3>상표 검색·유사도 분석</h3>
+        <div class="hook">출원 전에 충돌 가능성을 먼저 파악합니다.</div>
+        <p>동일·유사 상표가 이미 등록되어 있는지 사전 조사합니다. 거절 가능성을 줄이고, 분쟁 리스크를 미리 차단합니다.</p>
+        <div class="target-box">
+          <div class="target-title">이런 분이 필요합니다.</div>
+          <ul>
+            <li>브랜드명을 정했는데 등록 가능한지 모르겠는 분</li>
+            <li>경쟁사와 이름이 비슷해서 걱정되는 분</li>
+            <li>해외 진출 전 상표 확보가 필요한 분</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="service-row reverse">
+      <div class="service-img reveal from-right">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-text reveal from-left d1">
+        <h3>상표 출원·등록</h3>
+        <div class="hook">류 지정부터 등록까지, 빈틈 없이.</div>
+        <p>사업 영역에 맞는 상품·서비스류를 정확히 지정하고, 출원서를 작성합니다. 심사관 의견 대응까지 포함됩니다.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-img reveal from-left">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-text reveal from-right d1">
+        <h3>상표권 분쟁 대응</h3>
+        <div class="hook">침해 대응과 이의신청까지.</div>
+        <p>타인의 무단 사용에 대한 경고장 발송, 이의신청, 무효심판 등 상표권 보호를 위한 법적 대응을 진행합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <h2 class="section-title">절차 안내</h2>
+      <p class="section-subtitle">상표 출원부터 등록까지, 단계별로 안내합니다.</p>
+    </div>
+    <div id="process-steps"></div>
+    <div class="reveal d3">
+      <div class="process-note">
+        <strong>소요 기간</strong> — 출원 후 심사까지 평균 12~14개월. 우선심사 시 2~3개월로 단축 가능합니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta">
+  <div class="cta-glow1"></div>
+  <div class="cta-glow2"></div>
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>브랜드 이름, 지금 지켜야<br>나중에 후회하지 않습니다.</h2>
+    </div>
+    <div class="reveal d1">
+      <p>등록 가능 여부부터 확인해 드립니다.<br>부담 없이 상담하세요.</p>
+    </div>
+    <div class="reveal d2">
+      <button class="btn-primary" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록 신청하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="../privacy/">개인정보처리방침</a>
+      <a href="../email-policy/">이메일무단수집거부</a>
+      <a href="../disclaimer/">면책공고</a>
+    </div>
+    <div class="footer-company">에이드 특허법률사무소</div>
+    <div class="footer-info">서울 서초구 서초대로74길 45 10층 ㅣ 전화 02-000-0000 ㅣ 팩스 : 02-000-0000</div>
+    <div class="footer-copy">Copyrightⓒ 2026 AID PATENT & LAW FIRM. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
+
+<!-- ═══ Quick Bar ═══ -->
+<div class="quickbar">
+  <a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.5"/></svg>N</a>
+  <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" fill="none" stroke-width="1.5"/></svg>&#9675;</a>
+  <a href="#top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>TOP</a>
+</div>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const gnb = document.getElementById('gnb');
+window.addEventListener('scroll', () => {
+  gnb.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+function toggleDrawer() {
+  const btn = document.getElementById('mobileBtn');
+  const drawer = document.getElementById('drawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const end = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const timer = setInterval(() => {
+      current++;
+      if (current >= end) { el.textContent = end + suffix; clearInterval(timer); }
+      else { el.textContent = current + suffix; }
+    }, 120);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+const steps = [
+  { title: '상담', desc: '브랜드명과 사업 영역을 듣고 출원 전략을 잡습니다.' },
+  { title: '유사 상표 조사', desc: '동일·유사 상표 검색으로 등록 가능성을 분석합니다.' },
+  { title: '출원서 작성', desc: '상품·서비스류를 지정하고 출원서를 제출합니다.' },
+  { title: '심사 대응', desc: '심사관 의견에 대응하고 보정합니다.' },
+  { title: '등록', desc: '등록 결정 후 등록료를 납부하면 상표권이 확정됩니다.' },
+];
+const stepsContainer = document.getElementById('process-steps');
+steps.forEach((s, i) => {
+  const isLast = i === steps.length - 1;
+  stepsContainer.innerHTML += `
+    <div class="process-step reveal d${Math.min(i+1, 4)}">
+      <div class="process-dot-col">
+        <div class="process-dot">${String(i+1).padStart(2,'0')}</div>
+        ${!isLast ? '<div class="process-line"></div>' : ''}
+      </div>
+      <div class="process-content">
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+      </div>
+    </div>`;
+});
+document.querySelectorAll('.process-step.reveal').forEach(el => obs.observe(el));
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
+</script>
+</body>
+</html>

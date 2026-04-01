@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<title>자주 묻는 질문 | 에이드 특허법률사무소</title>
+<link href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+<style>
+.faq-hero { background: var(--blue); padding: 160px 24px 60px; text-align: center; }
+.faq-hero h1 { font-size: clamp(28px, 4vw, 44px); font-weight: 700; color: #fff; }
+.faq-hero p { color: rgba(255,255,255,0.7); font-size: 17px; margin-top: 12px; }
+
+/* Category filter */
+.faq-filter {
+  display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;
+  padding: 32px 24px; max-width: 1200px; margin: 0 auto;
+}
+.faq-filter-btn {
+  padding: 10px 24px; border-radius: 24px; border: 1px solid var(--gray-border);
+  background: #fff; font-size: 15px; font-weight: 500; color: var(--gray-600);
+  cursor: pointer; transition: all 0.3s; font-family: inherit;
+}
+.faq-filter-btn:hover { border-color: var(--blue); color: var(--blue); }
+.faq-filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* Extended FAQ styles */
+.faq-section { padding: 40px 0 100px; }
+.faq-count {
+  text-align: center; font-size: 14px; color: var(--gray-text); margin-bottom: 40px;
+}
+.faq-count strong { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ═══ GNB ═══ -->
+<nav class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a href="../" class="gnb-logo">
+      <img src="../assets/logo-white.svg" alt="에이드 특허법률사무소" class="logo-white">
+      <img src="../assets/logo-dark.svg" alt="에이드 특허법률사무소" class="logo-dark">
+      <span class="gnb-logo-text">에이드 특허법률사무소</span>
+    </a>
+    <div class="gnb-links">
+      <a href="../patent/">특허</a>
+      <a href="../trademark/">상표</a>
+      <a href="../design/">디자인</a>
+      <a href="../tribunal/">심판/소송</a>
+      <a href="../ip-strategy/">지식재산권 활용</a>
+      <a href="../column/">칼럼</a>
+      <a href="../faq/" class="active">FAQ</a>
+    </div>
+    <div class="gnb-right">
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+    </div>
+    <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
+      <div class="gnb-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="gnb-drawer" id="drawer">
+  <a href="../patent/">특허</a>
+  <a href="../trademark/">상표</a>
+  <a href="../design/">디자인</a>
+  <a href="../tribunal/">심판/소송</a>
+  <a href="../ip-strategy/">지식재산권 활용</a>
+  <a href="../column/">칼럼</a>
+  <a href="../faq/">FAQ</a>
+  <div class="gnb-drawer-buttons">
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기 →</button>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<div class="faq-hero">
+  <h1>자주 묻는 질문</h1>
+  <p>궁금한 점을 빠르게 확인하세요.</p>
+</div>
+
+<!-- ═══ FILTER ═══ -->
+<div class="faq-filter">
+  <button class="faq-filter-btn active" data-cat="all">전체</button>
+  <button class="faq-filter-btn" data-cat="특허">특허</button>
+  <button class="faq-filter-btn" data-cat="상표">상표</button>
+  <button class="faq-filter-btn" data-cat="디자인">디자인</button>
+  <button class="faq-filter-btn" data-cat="심판">심판/소송</button>
+  <button class="faq-filter-btn" data-cat="기업인증">기업인증</button>
+  <button class="faq-filter-btn" data-cat="일반">일반</button>
+</div>
+
+<div class="faq-count" id="faqCount"></div>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section" id="faq">
+  <div class="faq-inner" id="faqList"></div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta">
+  <div class="cta-glow1"></div>
+  <div class="cta-glow2"></div>
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>원하는 답을 찾지 못하셨나요?</h2>
+    </div>
+    <div class="reveal d1">
+      <p>편하게 문의 주시면,<br>담당 변리사가 직접 답변드립니다.</p>
+    </div>
+    <div class="reveal d2">
+      <button class="btn-primary" onclick="location.href='../contact/'">상담 신청하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="../privacy/">개인정보처리방침</a>
+      <a href="../email-policy/">이메일무단수집거부</a>
+      <a href="../disclaimer/">면책공고</a>
+    </div>
+    <div class="footer-company">에이드 특허법률사무소</div>
+    <div class="footer-info">서울 서초구 서초대로74길 45 10층 ㅣ 전화 02-000-0000 ㅣ 팩스 : 02-000-0000</div>
+    <div class="footer-copy">Copyrightⓒ 2026 AID PATENT & LAW FIRM. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
+
+<script>
+// ─── FAQ Data ───
+const faqs = [
+  { cat: '특허', q: '변리사를 통해 출원하면 비용만 더 드는 것 아닌가요?', a: '직접 출원도 가능하나, 등록이 안 될 수 있습니다. 등록이 되더라도, 권리 범위 설정에 실패하여 경쟁사를 막을 수 없을 수 있습니다.' },
+  { cat: '특허', q: '출원 후 취소·포기할 수 있나요?', a: '출원 후에도 취하가 가능합니다. 다만 시기에 따라 관납료 환급 여부가 달라지므로 상담을 권합니다.' },
+  { cat: '특허', q: '특허 출원 비용은 얼마인가요?', a: '기술 분야, 청구항 수, 우선심사 여부 등에 따라 달라집니다. 상담 시 기술 내용을 듣고 정확한 견적을 안내해 드립니다.' },
+  { cat: '특허', q: '아이디어 단계에서도 출원할 수 있나요?', a: '구체적인 기술적 구성이 있어야 출원이 가능합니다. 아이디어 단계에서 상담하시면, 출원 가능한 수준까지 구체화하는 것을 도와드립니다.' },
+  { cat: '특허', q: '특허 등록까지 얼마나 걸리나요?', a: '일반심사 기준 평균 12~18개월 소요됩니다. 우선심사 제도를 활용하면 2~4개월로 단축할 수 있습니다.' },
+  { cat: '상표', q: '지방인데 방문 없이 진행 가능한가요?', a: '네, 전 과정 비대면으로 진행 가능합니다. 전화, 카카오톡, 이메일로 상담부터 출원까지 처리됩니다.' },
+  { cat: '상표', q: '특허·상표·디자인, 동시에 출원할 수 있나요?', a: '네, 동시 출원이 가능합니다. 오히려 사업 초기에 한 번에 잡아두는 것이 효율적입니다. 상담 시 어떤 조합이 필요한지 함께 검토해 드립니다.' },
+  { cat: '상표', q: '상표 등록 비용은 얼마인가요?', a: '지정 상품·서비스류 수에 따라 달라집니다. 1류 기준 관납료+대리인 보수를 포함해 안내해 드립니다.' },
+  { cat: '상표', q: '이미 사용 중인 상호도 상표등록이 필요한가요?', a: '네. 상호등기와 상표등록은 별개입니다. 상호만 등기한 상태에서는 타인이 같은 이름을 상표로 등록할 수 있고, 그 경우 오히려 내가 사용을 제한받을 수 있습니다.' },
+  { cat: '상표', q: '해외에서도 상표를 보호받을 수 있나요?', a: '마드리드 국제출원 제도를 통해 한 번의 출원으로 여러 나라에 상표를 등록할 수 있습니다. 진출 예정 국가에 맞는 전략을 수립해 드립니다.' },
+  { cat: '디자인', q: '무료상담 가능한가요?', a: '네, 초기 상담은 무료입니다. 상황을 듣고 어떤 출원이 필요한지 방향을 잡아드립니다.' },
+  { cat: '디자인', q: '3D 파일이 없어도 디자인 출원이 가능한가요?', a: '네. 실물 사진, 스케치, 렌더링 등 다양한 자료를 기반으로 출원용 도면을 작성해 드립니다.' },
+  { cat: '디자인', q: '부분디자인이 뭔가요?', a: '제품 전체가 아닌 특정 부분만 분리하여 등록하는 것입니다. 핵심적인 디자인 요소만 보호받을 수 있어, 경쟁사의 유사 디자인을 더 넓게 차단할 수 있습니다.' },
+  { cat: '심판', q: '개인도 출원할 수 있나요, 법인만 가능한가요?', a: '개인도 출원 가능합니다. 개인사업자든 법인이든, 자연인 본인 명의로도 출원할 수 있습니다.' },
+  { cat: '심판', q: '거절결정을 받았는데, 방법이 없나요?', a: '거절결정 불복심판을 청구할 수 있습니다. 심사관의 거절 이유를 분석하고, 논리를 재구성하거나 보정을 통해 등록 가능성을 다시 높입니다.' },
+  { cat: '심판', q: '경고장을 받았는데 어떻게 해야 하나요?', a: '우선 경고장의 근거(상대방 권리)를 분석해야 합니다. 무조건 대응하기보다, 상대방 권리의 유효성과 침해 여부를 먼저 검토한 후 전략을 수립합니다.' },
+  { cat: '기업인증', q: '출원과 등록의 차이가 뭔가요?', a: '출원은 특허청에 신청서를 제출한 상태이고, 등록은 심사를 통과해 권리가 확정된 상태입니다. 출원만으로도 일정한 보호 효과가 있습니다.' },
+  { cat: '기업인증', q: '벤처인증을 받으려면 특허가 꼭 필요한가요?', a: '혁신성장 유형의 벤처인증에서는 IP가 중요한 평가요소입니다. 특허가 없어도 신청 자체는 가능하지만, 특허가 있으면 인증 가능성이 크게 높아집니다.' },
+  { cat: '일반', q: '상담 비용이 있나요?', a: '초기 상담은 무료입니다. 기술 내용과 사업 방향을 듣고, 필요한 출원이나 서비스를 안내해 드립니다.' },
+  { cat: '일반', q: '진행 상황은 어떻게 확인하나요?', a: '담당 변리사가 주요 단계마다 진행 상황을 안내합니다. 전화, 이메일, 카카오톡 등 편한 방법으로 언제든 문의하실 수 있습니다.' },
+  { cat: '일반', q: '계약 전에 비밀유지가 되나요?', a: '변리사는 법률상 비밀유지 의무가 있습니다. 상담 단계에서도 기술 내용에 대한 비밀은 철저히 보장됩니다.' },
+];
+
+// ─── Render FAQs ───
+const faqList = document.getElementById('faqList');
+const faqCount = document.getElementById('faqCount');
+
+function renderFaqs(cat) {
+  const filtered = cat === 'all' ? faqs : faqs.filter(f => f.cat === cat);
+  faqCount.innerHTML = `총 <strong>${filtered.length}</strong>개의 질문`;
+  faqList.innerHTML = filtered.map((f, i) => `
+    <div class="faq-item${i === 0 ? ' open' : ''}" data-cat="${f.cat}">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-tag">${f.cat}</span>
+        <span class="faq-q-text">${f.q}</span>
+        <span class="faq-arrow"></span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">${f.a}</div>
+      </div>
+    </div>
+  `).join('');
+}
+renderFaqs('all');
+
+// ─── Filter ───
+document.querySelectorAll('.faq-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.faq-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderFaqs(btn.dataset.cat);
+  });
+});
+
+// ─── FAQ Accordion ───
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+// ─── Scroll Reveal ───
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ─── GNB ───
+const gnb = document.getElementById('gnb');
+gnb.classList.add('scrolled');
+window.addEventListener('scroll', () => {
+  gnb.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+function toggleDrawer() {
+  const btn = document.getElementById('mobileBtn');
+  const drawer = document.getElementById('drawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
+}
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
+</script>
+</body>
+</html>

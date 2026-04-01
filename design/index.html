@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<title>디자인등록 | 에이드 특허법률사무소</title>
+<link href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<link href="../style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ═══ GNB ═══ -->
+<nav class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a href="../" class="gnb-logo">
+      <img src="../assets/logo-white.svg" alt="에이드 특허법률사무소" class="logo-white">
+      <img src="../assets/logo-dark.svg" alt="에이드 특허법률사무소" class="logo-dark">
+      <span class="gnb-logo-text">에이드 특허법률사무소</span>
+    </a>
+    <div class="gnb-links">
+      <a href="../patent/">특허</a>
+      <a href="../trademark/">상표</a>
+      <a href="../design/" class="active">디자인</a>
+      <a href="../tribunal/">심판/소송</a>
+      <a href="../ip-strategy/">지식재산권 활용</a>
+      <a href="../column/">칼럼</a>
+      <a href="../faq/">FAQ</a>
+    </div>
+    <div class="gnb-right">
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+    </div>
+    <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
+      <div class="gnb-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</nav>
+<div class="gnb-drawer" id="drawer">
+  <a href="../patent/">특허</a>
+  <a href="../trademark/">상표</a>
+  <a href="../design/">디자인</a>
+  <a href="../tribunal/">심판/소송</a>
+  <a href="../ip-strategy/">지식재산권 활용</a>
+  <a href="../column/">칼럼</a>
+  <a href="../faq/">FAQ</a>
+  <div class="gnb-drawer-buttons">
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기 →</button>
+  </div>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero hero--center">
+  <div class="hero-bg hero-bg--static" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1920&q=80')"></div>
+  <div class="hero-content">
+    <div class="reveal">
+      <h1>외관을 보호하는 가장 확실한 방법,<br><span>디자인</span>등록.</h1>
+    </div>
+    <div class="reveal d1">
+      <p class="subtitle">기능이 아닌 형태, 그 자체가 권리가 됩니다.</p>
+    </div>
+    <div class="reveal d2">
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+        <button class="btn-outline" onclick="document.getElementById('strengths').scrollIntoView({behavior:'smooth'})">서비스 안내 ↓</button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>SCROLL</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- ═══ STRENGTHS ═══ -->
+<section class="strengths" id="strengths">
+  <div class="strengths-inner">
+    <div class="reveal">
+      <h2 class="section-title">디자인 등록, 왜 필요한가.</h2>
+      <p class="section-subtitle">제품의 외관은 소비자가 가장 먼저 접하는 경쟁력입니다.</p>
+    </div>
+    <div class="strengths-grid">
+      <div class="strength-card reveal d1">
+        <div class="strength-num" data-count="20" data-suffix="년">0</div>
+        <div class="strength-label">최대 존속기간</div>
+        <div class="strength-sub">출원일로부터 20년 보호</div>
+      </div>
+      <div class="strength-card reveal d2">
+        <div class="strength-num" data-count="2" data-suffix="~3개월">0</div>
+        <div class="strength-label">심사 기간</div>
+        <div class="strength-sub">특허 대비 빠른 등록</div>
+      </div>
+      <div class="strength-card reveal d3">
+        <div class="strength-num" data-count="1" data-suffix=":1">0</div>
+        <div class="strength-label">담당 변리사 직접 소통</div>
+        <div class="strength-sub">도면 검토부터 등록까지</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ INSIGHT ═══ -->
+<section class="insight">
+  <div class="insight-inner">
+    <div class="reveal">
+      <div class="insight-badge">디자인 보호의 핵심</div>
+    </div>
+    <div class="reveal d1">
+      <h2>같은 제품이라도<br><span>도면에 따라</span> 보호범위가 달라집니다.</h2>
+    </div>
+    <div class="reveal d2">
+      <p>
+        디자인 등록은 <strong>도면이 곧 권리</strong>입니다.
+        어떤 각도에서, 어떤 부분을 강조하느냐에 따라 보호받는 범위가 완전히 달라집니다.
+        <br><br>
+        전체디자인과 부분디자인을 전략적으로 조합해야 실질적인 보호가 가능합니다.
+      </p>
+    </div>
+    <div class="reveal d3">
+      <div class="insight-case">
+        <div class="label">CASE STUDY</div>
+        <p>
+          스마트폰 모서리의 곡률, 아이콘 배치 패턴 — 애플은 <strong>부분디자인</strong>을 활용해
+          제품의 핵심적인 외관 요소만 분리 등록함으로써, 경쟁사의 유사 디자인을 효과적으로 차단했습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICES ═══ -->
+<section class="services">
+  <div class="services-inner">
+    <div class="service-row">
+      <div class="service-img reveal from-left">
+        <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">01</div>
+      </div>
+      <div class="service-text reveal from-right d1">
+        <h3>디자인 출원 전략 수립</h3>
+        <div class="hook">전체디자인과 부분디자인, 어떤 조합이 최적인지.</div>
+        <p>제품 외관의 핵심 요소를 분석하고, 전체디자인·부분디자인·관련디자인을 조합해 최적의 보호 전략을 설계합니다.</p>
+        <div class="target-box">
+          <div class="target-title">이런 분이 필요합니다.</div>
+          <ul>
+            <li>신제품 출시 전 외관을 보호하고 싶은 분</li>
+            <li>경쟁사가 유사한 디자인으로 제품을 출시한 분</li>
+            <li>디자인과 특허를 함께 출원하고 싶은 분</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="service-row reverse">
+      <div class="service-img reveal from-right">
+        <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">02</div>
+      </div>
+      <div class="service-text reveal from-left d1">
+        <h3>도면 작성·출원</h3>
+        <div class="hook">도면 한 장이 권리의 범위를 결정합니다.</div>
+        <p>3D 렌더링, 실물 사진, 스케치 등을 기반으로 특허청 기준에 맞는 도면을 작성하고 출원합니다.</p>
+      </div>
+    </div>
+    <div class="service-row">
+      <div class="service-img reveal from-left">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="">
+        <div class="service-num">03</div>
+      </div>
+      <div class="service-text reveal from-right d1">
+        <h3>디자인권 분쟁 대응</h3>
+        <div class="hook">모방 디자인에 대한 법적 대응.</div>
+        <p>유사 디자인 침해에 대한 경고, 심판, 소송을 통해 디자인권을 보호합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROCESS ═══ -->
+<section class="process">
+  <div class="process-inner">
+    <div class="reveal">
+      <h2 class="section-title">절차 안내</h2>
+      <p class="section-subtitle">디자인 출원부터 등록까지, 단계별로 안내합니다.</p>
+    </div>
+    <div id="process-steps"></div>
+    <div class="reveal d3">
+      <div class="process-note">
+        <strong>비밀디자인 제도</strong> — 등록 후 최대 3년간 디자인 내용을 비공개로 유지할 수 있어, 출시 전 보호에 유리합니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta">
+  <div class="cta-glow1"></div>
+  <div class="cta-glow2"></div>
+  <div class="cta-inner">
+    <div class="reveal">
+      <h2>제품의 외관, 지금 보호하지 않으면<br>누군가 먼저 등록합니다.</h2>
+    </div>
+    <div class="reveal d1">
+      <p>도면 준비부터 출원까지,<br>필요한 것을 정리해 드립니다.</p>
+    </div>
+    <div class="reveal d2">
+      <button class="btn-primary" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="../privacy/">개인정보처리방침</a>
+      <a href="../email-policy/">이메일무단수집거부</a>
+      <a href="../disclaimer/">면책공고</a>
+    </div>
+    <div class="footer-company">에이드 특허법률사무소</div>
+    <div class="footer-info">서울 서초구 서초대로74길 45 10층 ㅣ 전화 02-000-0000 ㅣ 팩스 : 02-000-0000</div>
+    <div class="footer-copy">Copyrightⓒ 2026 AID PATENT & LAW FIRM. ALL RIGHTS RESERVED.</div>
+  </div>
+</footer>
+
+<div class="quickbar">
+  <a href="#"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.5"/></svg>N</a>
+  <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" fill="none" stroke-width="1.5"/></svg>&#9675;</a>
+  <a href="#top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>TOP</a>
+</div>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+const gnb = document.getElementById('gnb');
+window.addEventListener('scroll', () => {
+  gnb.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+function toggleDrawer() {
+  const btn = document.getElementById('mobileBtn');
+  const drawer = document.getElementById('drawer');
+  btn.classList.toggle('open');
+  drawer.classList.toggle('open');
+  document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+  if (drawer.classList.contains('open')) gnb.classList.add('scrolled');
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const end = parseInt(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    let current = 0;
+    const timer = setInterval(() => {
+      current++;
+      if (current >= end) { el.textContent = end + suffix; clearInterval(timer); }
+      else { el.textContent = current + suffix; }
+    }, 120);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+const steps = [
+  { title: '상담', desc: '제품 외관과 보호 목적을 듣고 출원 전략을 잡습니다.' },
+  { title: '선행디자인 조사', desc: '유사 디자인 등록 현황을 조사합니다.' },
+  { title: '도면 작성', desc: '특허청 기준에 맞는 6면도 및 사시도를 작성합니다.' },
+  { title: '출원·심사', desc: '출원서를 제출하고 심사관 의견에 대응합니다.' },
+  { title: '등록', desc: '등록 결정 후 등록료를 납부하면 디자인권이 확정됩니다.' },
+];
+const stepsContainer = document.getElementById('process-steps');
+steps.forEach((s, i) => {
+  const isLast = i === steps.length - 1;
+  stepsContainer.innerHTML += `
+    <div class="process-step reveal d${Math.min(i+1, 4)}">
+      <div class="process-dot-col">
+        <div class="process-dot">${String(i+1).padStart(2,'0')}</div>
+        ${!isLast ? '<div class="process-line"></div>' : ''}
+      </div>
+      <div class="process-content">
+        <h4>${s.title}</h4>
+        <p>${s.desc}</p>
+      </div>
+    </div>`;
+});
+document.querySelectorAll('.process-step.reveal').forEach(el => obs.observe(el));
+
+// Logo load detection
+(function(){
+  var logo = document.querySelector('.gnb-logo');
+  if (!logo) return;
+  var img = logo.querySelector('.logo-white');
+  if (!img) return;
+  function check() {
+    if (img.complete && img.naturalWidth > 0) logo.classList.add('logo-loaded');
+  }
+  img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
+  check();
+})();
+</script>
+</body>
+</html>
