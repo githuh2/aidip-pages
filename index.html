@@ -718,6 +718,33 @@ document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .f
   img.addEventListener('load', function(){ logo.classList.add('logo-loaded'); });
   check();
 })();
+
+// ─── Scroll Snap (JS proximity) ───
+(function() {
+  const sections = document.querySelectorAll('.hero, .columns-section, .attorney, .faq-section');
+  const THRESHOLD = 0.3; // 뷰포트 30% 이내면 스냅 (0.1~0.5 사이로 조절)
+  let timer = null;
+  let snapping = false;
+
+  window.addEventListener('scroll', function() {
+    if (snapping) return;
+    clearTimeout(timer);
+    timer = setTimeout(function() {
+      const vh = window.innerHeight;
+      let closest = null;
+      let minDist = Infinity;
+      sections.forEach(function(s) {
+        var dist = Math.abs(s.getBoundingClientRect().top);
+        if (dist < minDist) { minDist = dist; closest = s; }
+      });
+      if (closest && minDist < vh * THRESHOLD && minDist > 2) {
+        snapping = true;
+        closest.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(function() { snapping = false; }, 800);
+      }
+    }, 150);
+  });
+})();
 </script>
 </body>
 </html>
