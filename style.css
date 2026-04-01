@@ -7,7 +7,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   color: #000; overflow-x: hidden; background: #fff;
 }
 a { text-decoration: none; color: inherit; }
@@ -40,12 +40,51 @@ a { text-decoration: none; color: inherit; }
   --gray-sub: #A3A3A3;
   --gray-step: #818181;
 
+  /* Typography */
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans KR', system-ui, sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
   /* Layout */
   --gnb-height: 100px;
   --max-width: 1920px;
   --content-padding: clamp(20px, 4vw, 200px);
   --content-narrow: 1200px;
 }
+
+/* ─── Font Application ─── */
+h1, h2, h3,
+.gnb-logo-text,
+.gnb-links a,
+.gnb-btn-outline,
+.gnb-btn-primary,
+.gnb-drawer a,
+.gnb-drawer-buttons button,
+.btn-primary,
+.btn-outline,
+.btn-bordered,
+.faq-more-btn,
+.faq-title,
+.columns-header h2,
+.attorney-title,
+.cta-btn,
+.cta h2,
+.cta-big,
+.cta-highlight,
+.insight-section h2,
+.insight-section h3,
+.service-text h3,
+.process-content h4,
+.strength-label,
+.service-num { font-family: var(--font-display); }
+
+.column-card-date,
+.breadcrumb-date,
+.scroll-hint span,
+.faq-tag,
+.category-pill,
+.insight-case .label,
+.footer-copy { font-family: var(--font-mono); }
 
 /* ─── Reveal Animation ─── */
 .reveal {
@@ -129,8 +168,7 @@ a { text-decoration: none; color: inherit; }
   padding: 10px 20px; border-radius: 8px;
   border: 1px solid rgba(255,255,255,0.4); background: transparent;
   color: #fff; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.3s; font-family: inherit;
-  white-space: nowrap;
+  cursor: pointer; transition: all 0.3s;  white-space: nowrap;
 }
 .gnb-btn-outline:hover { background: rgba(255,255,255,0.12); }
 .gnb.scrolled .gnb-btn-outline {
@@ -142,8 +180,7 @@ a { text-decoration: none; color: inherit; }
   padding: 10px 20px; border-radius: 8px;
   border: none; background: var(--blue);
   color: #fff; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: all 0.3s; font-family: inherit;
-  white-space: nowrap;
+  cursor: pointer; transition: all 0.3s;  white-space: nowrap;
 }
 .gnb-btn-primary:hover { background: #1e4bd4; transform: translateY(-1px); }
 
@@ -188,8 +225,7 @@ a { text-decoration: none; color: inherit; }
 }
 .gnb-drawer-buttons button {
   width: 100%; padding: 14px; border-radius: 8px;
-  font-size: 16px; font-weight: 600; cursor: pointer; font-family: inherit;
-}
+  font-size: 16px; font-weight: 600; cursor: pointer;}
 
 /* GNB responsive */
 @media (max-width: 1279px) {
@@ -312,14 +348,13 @@ a { text-decoration: none; color: inherit; }
 .btn-primary {
   padding: 16px 36px; background: var(--blue); color: #fff; border: none; border-radius: 12px;
   font-size: 17px; font-weight: 600; cursor: pointer;
-  transition: all 0.3s; font-family: inherit;
-}
+  transition: all 0.3s;}
 .btn-primary:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(38,88,235,0.4); }
 .btn-outline {
   padding: 16px 36px; background: transparent; color: #fff;
   border: 1px solid rgba(255,255,255,0.3); border-radius: 12px;
   font-size: 17px; font-weight: 600; cursor: pointer;
-  transition: all 0.3s; font-family: inherit; backdrop-filter: blur(4px);
+  transition: all 0.3s; backdrop-filter: blur(4px);
 }
 .btn-outline:hover { background: rgba(255,255,255,0.1); }
 /* Bordered variant (light bg) */
@@ -327,8 +362,7 @@ a { text-decoration: none; color: inherit; }
   display: inline-block; padding: 16px 40px;
   background: #fff; border: 0.5px solid var(--gray-text);
   font-size: 18px; font-weight: 500; color: #000;
-  cursor: pointer; transition: all 0.3s; font-family: inherit;
-}
+  cursor: pointer; transition: all 0.3s;}
 .btn-bordered:hover { border-color: var(--blue); color: var(--blue); }
 
 /* ═══════════════════════════════════════════
@@ -369,7 +403,6 @@ a { text-decoration: none; color: inherit; }
    ═══════════════════════════════════════════ */
 .columns-section {
   position: relative; width: 100%; height: 1080px; overflow: hidden;
-  scroll-margin-top: var(--gnb-height);
 }
 .columns-bg {
   position: absolute; inset: 0;
@@ -436,7 +469,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    FAQ (index)
    ═══════════════════════════════════════════ */
-.faq-section { padding: 100px 0; background: #fff; scroll-margin-top: var(--gnb-height); }
+.faq-section { padding: 100px 0; background: #fff; }
 .faq-inner { max-width: var(--content-narrow); margin: 0 auto; padding: 0 24px; }
 .faq-title {
   font-size: 36px; font-weight: 600; line-height: 140%; text-align: center; margin-bottom: 60px;
@@ -473,8 +506,7 @@ a { text-decoration: none; color: inherit; }
 .faq-more-btn {
   padding: 16px 40px; background: #fff; border: 1px solid #000;
   font-size: 18px; font-weight: 500; color: #000;
-  cursor: pointer; transition: all 0.3s; font-family: inherit;
-}
+  cursor: pointer; transition: all 0.3s;}
 .faq-more-btn:hover { border-color: var(--blue); color: var(--blue); }
 
 @media (max-width: 768px) {
@@ -489,7 +521,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    ATTORNEY
    ═══════════════════════════════════════════ */
-.attorney { padding: 100px 24px; background: #fff; scroll-margin-top: var(--gnb-height); }
+.attorney { padding: 100px 24px; background: #fff; }
 .attorney-inner { max-width: 1200px; margin: 0 auto; }
 .attorney-header { text-align: center; margin-bottom: 60px; }
 .attorney-header h2 {
@@ -842,7 +874,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    FOOTER
    ═══════════════════════════════════════════ */
-.footer { background: #000; padding: 60px 0 48px; color: var(--gray-sub); scroll-margin-top: var(--gnb-height); }
+.footer { background: #000; padding: 60px 0 48px; color: var(--gray-sub); }
 .footer-inner {
   max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(24px, 13vw, 260px);
 }
