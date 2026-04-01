@@ -41,7 +41,7 @@ a { text-decoration: none; color: inherit; }
   --gray-step: #818181;
 
   /* Typography */
-  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'IBM Plex Sans KR', system-ui, sans-serif;
   --font-body: 'IBM Plex Sans KR', system-ui, sans-serif;
   --font-mono: 'Space Mono', monospace;
 
