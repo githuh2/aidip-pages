@@ -218,11 +218,14 @@
 <!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline>
+    <video autoplay muted loop playsinline
+           poster="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_poster.webp">
       <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.webm" type="video/webm">
       <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.mp4" type="video/mp4">
     </video>
-    <div class="hero-poster"></div>
+    <div class="hero-poster"
+         style="background-image:url('https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_poster.webp')">
+    </div>
   </div>
   <div class="hero-orbs">
     <div class="hero-orb hero-orb--1"></div>
@@ -630,6 +633,34 @@ window.addEventListener('scroll', () => {
 
 }, { passive: true });
 
+// ─── Hero Video Fallback ───
+(function() {
+  const video = document.querySelector('.hero-bg video');
+  const poster = document.querySelector('.hero-poster');
+  if (!video || !poster) return;
+
+  function showPoster() {
+    video.style.display = 'none';
+    poster.style.display = 'block';
+  }
+
+  video.addEventListener('error', showPoster);
+  video.querySelectorAll('source').forEach(function(src) {
+    src.addEventListener('error', function() {
+      if (!video.currentSrc) showPoster();
+    });
+  });
+
+  // 영상이 5초 내 재생 시작하지 못하면 포스터로 전환
+  var fallbackTimer = setTimeout(function() {
+    if (video.readyState < 2) showPoster();
+  }, 5000);
+
+  video.addEventListener('canplay', function() {
+    clearTimeout(fallbackTimer);
+  });
+})();
+
 // ─── Cursor Glow ───
 const glow = document.getElementById('cursorGlow');
 document.addEventListener('mousemove', (e) => {
@@ -729,10 +760,11 @@ document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .f
   }
 
   // 현재 보이는 섹션 감지 (새로고침/직접 스크롤 대응)
+  var gnbH = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gnb-height'));
   function detectCurrent() {
     var best = 0, minDist = Infinity;
     sections.forEach(function(s, i) {
-      var d = Math.abs(s.getBoundingClientRect().top);
+      var d = Math.abs(s.getBoundingClientRect().top - gnbH);
       if (d < minDist) { minDist = d; best = i; }
     });
     current = best;
