@@ -5,7 +5,7 @@
 
 /* ─── Reset ─── */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 body {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   color: #000; overflow-x: hidden; background: #fff;
@@ -216,6 +216,7 @@ a { text-decoration: none; color: inherit; }
 .hero {
   position: relative; width: 100%; height: 100vh;
   display: flex; align-items: center; overflow: hidden;
+  scroll-snap-align: start;
 }
 .hero-bg {
   position: absolute; inset: 0; overflow: hidden;
@@ -369,6 +370,7 @@ a { text-decoration: none; color: inherit; }
    ═══════════════════════════════════════════ */
 .columns-section {
   position: relative; width: 100%; height: 1080px; overflow: hidden;
+  scroll-snap-align: start;
 }
 .columns-bg {
   position: absolute; inset: 0;
@@ -378,7 +380,7 @@ a { text-decoration: none; color: inherit; }
   content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.92);
 }
 .columns-inner {
-  position: relative; z-index: 2; padding: 80px clamp(20px, 13vw, 260px) 0;
+  position: relative; z-index: 2; padding: 100px clamp(20px, 13vw, 260px) 0;
 }
 .columns-header { margin-bottom: 40px; }
 .columns-header h2 {
@@ -421,7 +423,7 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 768px) {
   .columns-section { height: auto; padding-bottom: 60px; }
-  .columns-inner { padding: 40px 20px; }
+  .columns-inner { padding: 60px 20px; }
   .columns-header h2 { font-size: 28px; }
   .columns-header p { font-size: 16px; }
   .column-card { flex: 0 0 280px; height: 260px; }
@@ -435,7 +437,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    FAQ (index)
    ═══════════════════════════════════════════ */
-.faq-section { padding: 100px 0; background: #fff; }
+.faq-section { padding: 100px 0; background: #fff; scroll-snap-align: start; }
 .faq-inner { max-width: var(--content-narrow); margin: 0 auto; padding: 0 24px; }
 .faq-title {
   font-size: 36px; font-weight: 600; line-height: 140%; text-align: center; margin-bottom: 60px;
@@ -488,7 +490,7 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    ATTORNEY
    ═══════════════════════════════════════════ */
-.attorney { padding: 100px 24px; background: #fff; }
+.attorney { padding: 100px 24px; background: #fff; scroll-snap-align: start; }
 .attorney-inner { max-width: 1200px; margin: 0 auto; }
 .attorney-header { text-align: center; margin-bottom: 60px; }
 .attorney-header h2 {
