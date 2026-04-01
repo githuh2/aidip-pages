@@ -49,9 +49,6 @@
   100% { transform: translate(-20px, 20px) scale(0.95); }
 }
 
-/* ─── Hero Parallax ─── */
-.hero-bg { will-change: transform; }
-
 /* ─── Gradient Shimmer on Hero Title ─── */
 .hero h1 {
   background: linear-gradient(90deg, #fff 0%, #fff 40%, var(--blue-accent) 50%, #fff 60%, #fff 100%);
@@ -631,10 +628,6 @@ window.addEventListener('scroll', () => {
   // Scroll progress
   scrollProgress.style.transform = `scaleX(${scrollY / docH})`;
 
-  // Hero parallax
-  if (scrollY < window.innerHeight) {
-    heroBg.style.transform = `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`;
-  }
 }, { passive: true });
 
 // ─── Cursor Glow ───

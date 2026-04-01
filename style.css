@@ -71,8 +71,7 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 0.5px solid rgba(255,255,255,0.15);
 }
 .gnb.scrolled {
-  background: rgba(255,255,255,0.97);
-  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.95);
   border-bottom-color: rgba(0,0,0,0.08);
   box-shadow: 0 2px 9px rgba(0,0,0,0.1);
 }
@@ -564,7 +563,8 @@ a { text-decoration: none; color: inherit; }
 /* ═══════════════════════════════════════════
    INSIGHT (dark section, subpages)
    ═══════════════════════════════════════════ */
-.insight { padding: 100px 24px; background: var(--dark-deep); text-align: center; }
+.insight { padding: 100px 24px; background: var(--dark-deep); text-align: center; word-break: keep-all; }
+.insight--logo { background: #101828; }
 .insight-inner { max-width: 800px; margin: 0 auto; }
 .insight-badge {
   display: inline-block; padding: 6px 16px; border-radius: 20px;
