@@ -11,6 +11,7 @@ body {
   color: #000; overflow-x: hidden; background: #fff;
 }
 a { text-decoration: none; color: inherit; }
+button, input, select, textarea { font-family: inherit; }
 
 /* ─── Variables ─── */
 :root {
