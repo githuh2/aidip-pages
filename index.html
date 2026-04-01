@@ -222,7 +222,8 @@
 <section class="hero">
   <div class="hero-bg">
     <video autoplay muted loop playsinline>
-      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero.mp4" type="video/mp4">
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.webm" type="video/webm">
+      <source src="https://pub-45dea1d5c44f4d51839c9ae85b9ba138.r2.dev/footage/hero_1080.mp4" type="video/mp4">
     </video>
     <div class="hero-poster"></div>
   </div>
@@ -718,30 +719,71 @@ document.querySelectorAll('.gnb-btn-primary, .gnb-btn-outline, .btn-bordered, .f
   check();
 })();
 
-// ─── Scroll Snap (JS proximity) ───
+// ─── Fullpage Scroll (wheel hijack) ───
 (function() {
-  const sections = document.querySelectorAll('.hero, .columns-section, .attorney, .faq-section');
-  const THRESHOLD = 0.3; // 뷰포트 30% 이내면 스냅 (0.1~0.5 사이로 조절)
-  let timer = null;
-  let snapping = false;
+  const sections = Array.from(document.querySelectorAll('.hero, .columns-section, .attorney, .faq-section, .footer'));
+  let current = 0;
+  let locked = false;
+  const DURATION = 800; // 전환 시간(ms) — 조절 가능
+  const COOLDOWN = 1000; // 다음 스크롤까지 대기(ms)
 
-  window.addEventListener('scroll', function() {
-    if (snapping) return;
-    clearTimeout(timer);
-    timer = setTimeout(function() {
-      const vh = window.innerHeight;
-      let closest = null;
-      let minDist = Infinity;
-      sections.forEach(function(s) {
-        var dist = Math.abs(s.getBoundingClientRect().top);
-        if (dist < minDist) { minDist = dist; closest = s; }
-      });
-      if (closest && minDist < vh * THRESHOLD && minDist > 2) {
-        snapping = true;
-        closest.scrollIntoView({ behavior: 'smooth' });
-        setTimeout(function() { snapping = false; }, 800);
-      }
-    }, 150);
+  function goTo(idx) {
+    if (idx < 0 || idx >= sections.length || locked) return;
+    locked = true;
+    current = idx;
+    sections[current].scrollIntoView({ behavior: 'smooth' });
+    setTimeout(function() { locked = false; }, COOLDOWN);
+  }
+
+  // 현재 보이는 섹션 감지 (새로고침/직접 스크롤 대응)
+  function detectCurrent() {
+    var best = 0, minDist = Infinity;
+    sections.forEach(function(s, i) {
+      var d = Math.abs(s.getBoundingClientRect().top);
+      if (d < minDist) { minDist = d; best = i; }
+    });
+    current = best;
+  }
+
+  // 휠 이벤트
+  window.addEventListener('wheel', function(e) {
+    if (locked) { e.preventDefault(); return; }
+    // 섹션 내부에 스크롤 가능한 콘텐츠가 있으면 무시 (캐러셀 등)
+    var el = e.target;
+    while (el && el !== document.body) {
+      if (el.scrollWidth > el.clientWidth && el.classList.contains('columns-carousel')) return;
+      el = el.parentElement;
+    }
+    detectCurrent();
+    if (e.deltaY > 30) {
+      e.preventDefault();
+      goTo(current + 1);
+    } else if (e.deltaY < -30) {
+      e.preventDefault();
+      goTo(current - 1);
+    }
+  }, { passive: false });
+
+  // 터치 이벤트 (모바일)
+  var touchY = 0;
+  window.addEventListener('touchstart', function(e) {
+    touchY = e.touches[0].clientY;
+  }, { passive: true });
+  window.addEventListener('touchend', function(e) {
+    if (locked) return;
+    var diff = touchY - e.changedTouches[0].clientY;
+    if (Math.abs(diff) < 50) return; // 작은 터치 무시
+    detectCurrent();
+    if (diff > 0) goTo(current + 1);
+    else goTo(current - 1);
+  }, { passive: true });
+
+  // 키보드 (위/아래 화살표, Page Up/Down)
+  window.addEventListener('keydown', function(e) {
+    if (locked) return;
+    detectCurrent();
+    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); goTo(current + 1); }
+    if (e.key === 'ArrowUp' || e.key === 'PageUp') { e.preventDefault(); goTo(current - 1); }
   });
 })();
 </script>
