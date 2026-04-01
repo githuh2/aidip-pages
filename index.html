@@ -187,12 +187,13 @@
       <a href="design/">디자인</a>
       <a href="tribunal/">심판/소송</a>
       <a href="ip-strategy/">지식재산권 활용</a>
-      <a href="column/">칼럼</a>
+
       <a href="faq/">FAQ</a>
     </div>
 
+    <!-- 모든 페이지 공통: 상표등록 버튼은 페이지 테마와 무관하게 항상 동일 -->
     <div class="gnb-right">
-      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기</button>
+      <button class="gnb-btn-outline" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록</button>
     </div>
 
     <div class="gnb-mobile-btn" id="mobileBtn" onclick="toggleDrawer()">
@@ -210,10 +211,10 @@
   <a href="design/">디자인</a>
   <a href="tribunal/">심판/소송</a>
   <a href="ip-strategy/">지식재산권 활용</a>
-  <a href="column/">칼럼</a>
+
   <a href="faq/">FAQ</a>
   <div class="gnb-drawer-buttons">
-    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상담하기 →</button>
+    <button class="gnb-btn-outline" style="width:100%;padding:14px;color:#000;border-color:rgba(0,0,0,0.15)" onclick="location.href='https://ipms-web-production.up.railway.app/apply/trademark'">상표등록 →</button>
   </div>
 </div>
 
@@ -255,13 +256,19 @@
 </section>
 
 <!-- ═══ COLUMN ═══ -->
+<!-- 결정사항 (2026-04-01):
+  - 별도 칼럼 페이지(/column/) 삭제함. 이 메인 섹션만 유지.
+  - 각 카드에 네이버 블로그/카페 글 링크 연결 가능 (href 또는 onclick).
+  - 썸네일 이미지: Unsplash 유지 (네이버 이미지 핫링크 불안정).
+  - 제목: 하드코딩 유지 (정적 사이트라 CORS로 동적 fetch 불가).
+  - 블로그 글 추가 시 이 HTML도 함께 업데이트할 것.
+-->
 <section class="columns-section">
   <div class="columns-bg"></div>
   <div class="columns-inner">
     <div class="columns-header reveal">
       <h2>에이드 칼럼</h2>
       <p>에이드 특허법률사무소의 더 많은 소식을<br>칼럼을 통해 살펴보세요</p>
-      <button class="btn-bordered">자세히보기</button>
     </div>
 
     <div class="columns-carousel" id="carousel">

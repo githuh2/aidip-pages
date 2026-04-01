@@ -14,7 +14,6 @@ COPY trademark/ /usr/share/nginx/html/trademark/
 COPY design/ /usr/share/nginx/html/design/
 COPY tribunal/ /usr/share/nginx/html/tribunal/
 COPY ip-strategy/ /usr/share/nginx/html/ip-strategy/
-COPY column/ /usr/share/nginx/html/column/
 COPY faq/ /usr/share/nginx/html/faq/
 COPY privacy/ /usr/share/nginx/html/privacy/
 COPY disclaimer/ /usr/share/nginx/html/disclaimer/
