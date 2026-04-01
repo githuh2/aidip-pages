@@ -42,8 +42,8 @@ button, input, select, textarea { font-family: inherit; }
   --gray-step: #818181;
 
   /* Typography */
-  --font-display: 'Space Grotesk', 'Pretendard', system-ui, sans-serif;
-  --font-body: 'Pretendard', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Wanted Sans Variable', 'Pretendard', system-ui, sans-serif;
+  --font-body: 'Wanted Sans Variable', 'Pretendard', system-ui, sans-serif;
   --font-mono: 'Space Mono', monospace;
 
   /* Layout */
