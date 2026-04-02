@@ -30,6 +30,17 @@ button, input, select, textarea { font-family: inherit; }
   --dark-deep: #0A0F1E;
   --gray-bg: #F8F8F8;
   --gray-50: #F8F9FC;
+
+  /* Section Background Tiers
+     T1 White     — 주요 콘텐츠 (services, attorney)
+     T2 Mist      — 보조 콘텐츠 (strengths, process, pricing)
+     T3 Blue Wash — 강조/전환 섹션
+     T4 Dark      — 임팩트 (insight, cta)
+     규칙: 인접 섹션은 반드시 다른 Tier 사용 */
+  --bg-white: #FFFFFF;
+  --bg-mist: #F4F6FB;
+  --bg-blue-wash: #E8EDFB;
+  --bg-dark: #0A0F1E;
   --gray-100: #F1F1F1;
   --gray-300: #B6C1E4;
   --gray-500: #6B7280;
@@ -470,7 +481,7 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    FAQ (index)
    ═══════════════════════════════════════════ */
-.faq-section { padding: 100px 0; background: #fff; }
+.faq-section { padding: 100px 0; background: var(--bg-mist); }
 .faq-inner { max-width: var(--content-narrow); margin: 0 auto; padding: 0 24px; }
 .faq-title {
   font-size: 36px; font-weight: 600; line-height: 140%; text-align: center; margin-bottom: 60px;
@@ -522,7 +533,7 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    ATTORNEY
    ═══════════════════════════════════════════ */
-.attorney { padding: 100px 24px; background: #fff; }
+.attorney { padding: 100px 24px; background: var(--bg-white); }
 .attorney-inner { max-width: 1200px; margin: 0 auto; }
 .attorney-header { text-align: center; margin-bottom: 60px; }
 .attorney-header h2 {
@@ -583,7 +594,7 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    STRENGTHS (subpages)
    ═══════════════════════════════════════════ */
-.strengths { padding: 100px 24px; background: #fff; scroll-margin-top: var(--gnb-height); }
+.strengths { padding: 100px 24px; background: var(--bg-mist); scroll-margin-top: var(--gnb-height); }
 .strengths-inner { max-width: 1000px; margin: 0 auto; }
 .strengths-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
 .strength-card {
@@ -599,8 +610,8 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    INSIGHT (dark section, subpages)
    ═══════════════════════════════════════════ */
-.insight { padding: 100px 24px; background: var(--dark-deep); text-align: center; word-break: keep-all; }
-.insight--logo { background: #101828; }
+.insight { padding: 100px 24px; background: var(--bg-dark); text-align: center; word-break: keep-all; }
+.insight--logo { background: #151D3B; }
 .insight-inner { max-width: 800px; margin: 0 auto; }
 .insight-badge {
   display: inline-block; padding: 6px 16px; border-radius: 20px;
@@ -647,7 +658,7 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    SERVICES zigzag (subpages)
    ═══════════════════════════════════════════ */
-.services { padding: 100px 24px; background: #fff; }
+.services { padding: 100px 24px; background: var(--bg-white); }
 .services-inner { max-width: 1100px; margin: 0 auto; }
 .service-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
 .service-row:last-child { margin-bottom: 0; }
@@ -686,7 +697,7 @@ h1, h2, h3,
 /* ═══════════════════════════════════════════
    PROCESS (subpages)
    ═══════════════════════════════════════════ */
-.process { padding: 100px 24px; background: var(--gray-50); }
+.process { padding: 100px 24px; background: var(--bg-mist); }
 .process-inner { max-width: 640px; margin: 0 auto; }
 .process-step { display: flex; gap: 16px; }
 .process-dot-col { display: flex; flex-direction: column; align-items: center; }
@@ -709,7 +720,7 @@ h1, h2, h3,
    PRICING
    ═══════════════════════════════════════════ */
 .pricing {
-  padding: 100px 24px; background: var(--gray-50);
+  padding: 100px 24px; background: var(--bg-mist);
 }
 .pricing-inner {
   max-width: 1100px; margin: 0 auto;
