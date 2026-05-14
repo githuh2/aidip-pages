@@ -567,13 +567,13 @@
 
 <!-- ═══ Quick Bar ═══ -->
 <div class="quickbar">
-  <a href="#">
-    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" fill="none" stroke-width="1.5"/><path d="M8 12h8M12 8v8" stroke="#fff" stroke-width="1.5"/></svg>
-    N
+  <a href="https://pf.kakao.com/_QeyCX" target="_blank" rel="noopener noreferrer" aria-label="카카오톡 채널">
+    <svg viewBox="0 0 24 24"><path d="M12 4C6.48 4 2 7.58 2 12c0 2.78 1.77 5.23 4.47 6.68L5.5 22l3.78-2.13c.88.16 1.79.25 2.72.25 5.52 0 10-3.58 10-8s-4.48-8-10-8z" fill="#fff"/></svg>
+    카톡상담
   </a>
-  <a href="#">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke="#fff" fill="none" stroke-width="1.5"/></svg>
-    &#9675;
+  <a href="https://www.linkedin.com/in/syhuh/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+    <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.2 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.18c0-1.47-.03-3.37-2.05-3.37-2.05 0-2.37 1.6-2.37 3.26V22H7.42V8z" fill="#fff"/></svg>
+    LinkedIn
   </a>
   <a href="#top">
     <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke="#fff" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -695,16 +695,76 @@ function toggleFaq(el) {
   if (!wasOpen) item.classList.add('open');
 }
 
-// ─── Carousel Nav + Progress ───
+// ─── Carousel: Infinite Loop + Drag + Arrows ───
 const carousel = document.getElementById('carousel');
 const progressBar = document.getElementById('carouselProgress');
+let cardsBlockWidth = 0;
+let originalsStart = 0;
+let isDragging = false;
+
+(function initCarouselLoop() {
+  const originals = Array.from(carousel.children);
+  if (!originals.length) return;
+  const makeClones = () => originals.map(c => {
+    const n = c.cloneNode(true);
+    n.classList.remove('reveal', 'd1', 'd2', 'd3', 'd4');
+    n.dataset.clone = '1';
+    return n;
+  });
+  const before = makeClones();
+  const after = makeClones();
+  before.slice().reverse().forEach(n => carousel.insertBefore(n, carousel.firstChild));
+  after.forEach(n => carousel.appendChild(n));
+
+  const measure = () => {
+    const cs = getComputedStyle(carousel);
+    const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
+    let total = 0;
+    originals.forEach((c, i) => {
+      total += c.getBoundingClientRect().width;
+      if (i < originals.length - 1) total += gap;
+    });
+    cardsBlockWidth = total + gap;
+    originalsStart = cardsBlockWidth;
+    carousel.scrollLeft = originalsStart;
+  };
+  measure();
+  carousel.querySelectorAll('img').forEach(img => {
+    if (!img.complete) img.addEventListener('load', measure, { once: true });
+  });
+  window.addEventListener('resize', measure);
+})();
 
 function updateCarouselProgress() {
-  const max = carousel.scrollWidth - carousel.clientWidth;
-  const pct = max > 0 ? carousel.scrollLeft / max : 0;
-  progressBar.style.transform = `translateX(${pct * 400}%)`;
+  if (!cardsBlockWidth) {
+    const max = carousel.scrollWidth - carousel.clientWidth;
+    const pct = max > 0 ? carousel.scrollLeft / max : 0;
+    progressBar.style.transform = `translateX(${pct * 400}%)`;
+    return;
+  }
+  const offset = ((carousel.scrollLeft - originalsStart) % cardsBlockWidth + cardsBlockWidth) % cardsBlockWidth;
+  progressBar.style.transform = `translateX(${(offset / cardsBlockWidth) * 400}%)`;
 }
-carousel.addEventListener('scroll', updateCarouselProgress, { passive: true });
+
+function wrapScroll() {
+  if (!cardsBlockWidth) return;
+  if (carousel.scrollLeft < originalsStart - cardsBlockWidth * 0.5) {
+    progressBar.style.transition = 'none';
+    carousel.scrollLeft += cardsBlockWidth;
+    requestAnimationFrame(() => { progressBar.style.transition = ''; });
+  } else if (carousel.scrollLeft > originalsStart + cardsBlockWidth * 1.5) {
+    progressBar.style.transition = 'none';
+    carousel.scrollLeft -= cardsBlockWidth;
+    requestAnimationFrame(() => { progressBar.style.transition = ''; });
+  }
+}
+
+let scrollEndTimer = null;
+carousel.addEventListener('scroll', () => {
+  updateCarouselProgress();
+  clearTimeout(scrollEndTimer);
+  scrollEndTimer = setTimeout(() => { if (!isDragging) wrapScroll(); }, 150);
+}, { passive: true });
 
 document.getElementById('carouselPrev').addEventListener('click', () => {
   carousel.scrollBy({ left: -558, behavior: 'smooth' });
@@ -713,9 +773,42 @@ document.getElementById('carouselNext').addEventListener('click', () => {
   carousel.scrollBy({ left: 558, behavior: 'smooth' });
 });
 
+// Mouse drag-to-scroll (touch uses native overflow scroll)
+(function enableDrag() {
+  let startX = 0, startScroll = 0, moved = false;
+  carousel.addEventListener('pointerdown', (e) => {
+    if (e.pointerType !== 'mouse' || e.button !== 0) return;
+    isDragging = true; moved = false;
+    startX = e.clientX; startScroll = carousel.scrollLeft;
+    carousel.classList.add('dragging');
+    try { carousel.setPointerCapture(e.pointerId); } catch {}
+    carousel.querySelectorAll('.column-card').forEach(c => c.style.transform = '');
+  });
+  carousel.addEventListener('pointermove', (e) => {
+    if (!isDragging) return;
+    const dx = e.clientX - startX;
+    if (Math.abs(dx) > 3) moved = true;
+    carousel.scrollLeft = startScroll - dx;
+  });
+  function endDrag(e) {
+    if (!isDragging) return;
+    isDragging = false;
+    carousel.classList.remove('dragging');
+    try { carousel.releasePointerCapture(e.pointerId); } catch {}
+    wrapScroll();
+    if (moved) {
+      const suppress = (ev) => { ev.stopPropagation(); ev.preventDefault(); };
+      carousel.addEventListener('click', suppress, { capture: true, once: true });
+    }
+  }
+  carousel.addEventListener('pointerup', endDrag);
+  carousel.addEventListener('pointercancel', endDrag);
+})();
+
 // ─── Card 3D Tilt ───
 document.querySelectorAll('.column-card').forEach(card => {
   card.addEventListener('mousemove', (e) => {
+    if (isDragging) return;
     const rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;

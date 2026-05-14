@@ -437,8 +437,14 @@ h1, h2, h3,
   display: flex; gap: 20px; overflow-x: auto;
   padding-bottom: 20px; scroll-snap-type: x mandatory;
   -ms-overflow-style: none; scrollbar-width: none; margin-top: 20px;
+  cursor: grab; touch-action: pan-y;
 }
 .columns-carousel::-webkit-scrollbar { display: none; }
+.columns-carousel.dragging {
+  cursor: grabbing; scroll-snap-type: none; user-select: none;
+}
+.columns-carousel.dragging img,
+.columns-carousel.dragging .column-card { pointer-events: none; }
 .column-card {
   flex: 0 0 538px; height: 430px;
   position: relative; overflow: hidden; scroll-snap-align: start;
